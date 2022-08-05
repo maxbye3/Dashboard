@@ -14,39 +14,97 @@ function App() {
     const iframeRef = useRef(null)
     const [messageData, setMessageData] = useState()
 
-  const onResized = data => {
-    console.log('ONRESIZED', data);
-    setMessageData(data);
-  }
+    const onResized = data => {
+        console.log('ONRESIZED', data);
+        setMessageData(data);
+    }
 
-  const onMessage = data => {
-    console.log('DATA FROM IFRAME:', data.message);
-    setMessageData(data)
-    iframeRef.current.sendMessage('Hello back from the parent page')
-  }
+    const onMessage = data => {
+        document.getElementById('loginPage').style.display = 'none';
+    }
 
 
     return (
         <div className="App">
-            <IframeResizer
-        forwardRef={iframeRef}
-        heightCalculationMethod="lowestElement"
-        inPageLinks
-        log
-        onMessage={onMessage}
-        onResized={onResized}
-        src="https://davidjbradshaw.com/iframe-resizer/example/frame.content.html"
-        style={{ height: '50vh', width: '20%', minWidth: '100%'}}
-      />
-            <div className="grid-stack">
-                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="4">
-                    <div className="grid-stack-item-content">Item 1</div>
+            <p>
+                https://authex-0.tsgctp.org:9005/services/capps/access
+                a-su3@ctpdev.org
+                a-su3@$435Brannan/3000
+            </p>
+
+            <div id="loginPage" style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '10', background: 'white' }}>
+                <IframeResizer onMessage={onMessage} style={{ height: '100vh', width: '100vw' }} src="http://127.0.0.1:5500/capps.html"></IframeResizer> 
+        </div>
+
+            <div className="grid-stack" style={{ height: '480px' }}>
+                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="7" style={{ height: '480px', width: '33%' }}>
+                    <div className="grid-stack-item-content">
+                        <div
+                            style={{
+                                overflow: 'hidden',
+                            }}
+                        >
+                            <iframe
+                                scrolling="no"
+                                src="http://127.0.0.1:5500/node.html"
+                                style={{
+                                    pointerEvents: 'none',
+                                    height: '1200px',
+                                    marginTop: '-120px',
+                                    marginLeft: '-30px',
+                                    marginRight: '30px',
+                                    width: '38vw'
+                                }}
+                            >
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
-                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="4">
-                    <div className="grid-stack-item-content">Item 2</div>
+                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="7" style={{ height: '480px', width: '33%' }}>
+                    <div className="grid-stack-item-content">
+                        <div
+                            style={{
+                                overflow: 'hidden',
+                            }}
+                        >
+                            <iframe
+                                scrolling="no"
+                                src="http://127.0.0.1:5500/testest.html"
+                                style={{
+                                    pointerEvents: 'none',
+                                    height: '1200px',
+                                    marginTop: '-120px',
+                                    marginLeft: '-30px',
+                                    marginRight: '30px',
+                                    width: '38vw'
+                                }}
+                            >
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
-                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="4">
-                    <div className="grid-stack-item-content">Item 3</div>
+                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="7" style={{ height: '480px', width: '33%' }}>
+                    <div className="grid-stack-item-content">
+                        <div
+                            style={{
+                                overflow: 'hidden',
+                            }}
+                        >
+                            <iframe
+                                scrolling="no"
+                                src="http://127.0.0.1:5500/yoyo.html"
+                                style={{
+                                    pointerEvents: 'none',
+                                    height: '1200px',
+                                    marginTop: '-120px',
+                                    marginLeft: '-30px',
+                                    marginRight: '30px',
+                                    width: '38vw'
+                                }}
+                            >
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
