@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'Replica-Pro'; 
+    src: url("./fonts/replicapro_regular.otf") format("opentype");
+    font-style: normal;
+}
+
+.ui-resizable-handle {
+    display: none !important;
+}
+
+nav.navbar {
+    font-family: Replica-Pro, sans-serif;
+    background-color: #222;
+    color: #fff;
+    font-size: .875rem;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    line-height: 1.375;
+    font-size: .875rem;
+    font-weight: 700;
+}
+
+.navbar-header {
+    float: left;
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    background: url(https://www.techsoup.org/_layouts/15/TechSoupRWD/ui/images/tslogo.svg) center no-repeat, linear-gradient(transparent, transparent);
+    display: block;
+    float: left;
+    height: 50px;
+    margin: 0 15px;
+    padding: 0;
+    width: 118px;
+}
+
+nav.navbar .navbar-corner#signIn>div {
+    margin-right: 5px;
+    float: right;
+    -webkit-align-items: center;
+    display: flex;
+    display: -webkit-flex;
+    height: 50px;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+}
+
+.dashboardContainer {
+    float: left;
+}
+
+.dashboardContainer p {
+    margin-top: 16px;
+}
+
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 500;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    line-height: 1.42857;
+    background-image: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+nav.navbar .navbar-corner>div .btn {
+    font-size: .9em;
+    padding: 2px 8px;
+    color: #fff;
+    font-weight: 100;
+    background-color: transparent;
+    border-color: #fff;
+    border-radius: 2px;
+    font-family: Replica-Pro, Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.btn-black-white {
+    color: #fff;
+    background-color: transparent;
+    border-color: #fff;
+}
+.btn-black-white:hover {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+
+.btn-black-white-inverse {
+    color: #000 !important;
+    background-color: #fff;
+    background: #fff !important;
+}
+
+.btn-black-white-inverse:hover {
+    color: #fff !important;
+    background-color: #000;
+    background: #000 !important;
+}
+
+.sidePanel{
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100vh;
+    display: block;
+    background-color: #004873;
+}
+
+.panels{
+height: 200px;
+overflow: hidden;
+}
+
+.sidePanel .panels{
+    cursor: pointer;
+    padding-left: 25px;
+    margin-top: 20px;
+}
