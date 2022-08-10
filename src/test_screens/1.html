@@ -23,7 +23,7 @@
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/busyutls/busyutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/numutls/numutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/dtutls/dtutls.js"></script>
-<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node0shzqg1g0id0613sf405bnao3r31314-1659725520160.js"></script>
+<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node0shzqg1g0id0613sf405bnao3r31314-1659725524103.js"></script>
 
 <!-- Common, CDN and some local files ... -->
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
@@ -46,10 +46,12 @@
 <!-- End DataTables includes ... -->
 
 <!-- External libraries or CSS, specififc to an app or group of apps ... -->
-<script type="text/javascript" src="https://code.highcharts.com/maps/highmaps.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/maps/modules/data.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/dumbbell.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/lollipop.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <!-- End external libs and CSS ... -->
 
@@ -59,7 +61,7 @@
 <link href="https://authex-0.tsgctp.org:9001/webapps/static/img/favicon.ico" rel="shortcut icon">
 
 <title>
-(Chart) Org Count Global View</title>
+(Chart) Org Count by Country</title>
 </head>
 
 <body>
@@ -271,10 +273,10 @@
 <div class="div-capp-small">
 &nbsp;&nbsp;&nbsp;<span id="ctp_user">a-su3@ctpdev.org</span>
 &nbsp;<strong>→</strong>
-&nbsp;<strong>(Chart) Org Count Global View</strong>
+&nbsp;<strong>(Chart) Org Count by Country</strong>
 &nbsp;<em>Version: 0.82</em>
 &nbsp;<strong>→</strong>
-&nbsp;<em>Count of Organizations global view.</em>
+&nbsp;<em>Count of Organizations by Country.</em>
 &nbsp;<strong>→</strong>
 &nbsp; <b><em style="color:blue;">prod/capp-su2</em></b> </div>
 
@@ -337,23 +339,27 @@
 <!-- START MARKDOWN TEXT -->  
 <h5 id="overview"><a href="#overview" id="overview">Overview:</a></h5>
 <blockquote>
-<p>This CApp displays the distribution of <em>Organizations</em> within the primary CTP datastore, by country, projected onto a global topology map, along with other <em>country specific metadata</em>. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup> <sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup></p>
+<p>This CApp displays the distribution of <em>Organizations</em> within the primary CTP datastore, by country, along with other <em>country specific metadata</em>. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup> <sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup> <sup id="fnref-4"><a class="footnote-ref" href="#fn-4">4</a></sup></p>
 </blockquote>
 <!-- END MARKDOWN TEXT -->
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn-1">
-<p>The count of organizations is displayed by hovering over a country or territory.</p>
+<p>The count of organizations is displayed using the natural logarithm of the actual count.</p>
 <a href="#fnref-1" class="footnote-backref">&#8617;</a>
 </li>
 <li id="fn-2">
-<p>A country or territory that appears <em>blank or white</em> may have no data associated with it and/or the naming varies from the specifications used in CTP and the source topology map. Filters will be added to correct the latter case of <em>misnamed</em> countries and territories.</p>
+<p>The actual count can easily be displayed by using the table filter and a country specific filter.</p>
 <a href="#fnref-2" class="footnote-backref">&#8617;</a>
 </li>
 <li id="fn-3">
-<p>Note that the graph can be viewed independent from the source table, and or exported in various image formats, using the controls available in the upper right corner of the graphic (the hamburger menu).</p>
+<p>Sorting the table will cause the graph to be redrawn based on the sorted data, which can yield a progressive graph rather and the intial <em>random looking</em> graph.</p>
 <a href="#fnref-3" class="footnote-backref">&#8617;</a>
+</li>
+<li id="fn-4">
+<p>Note that the graph can be viewed independent from the source table, and or exported in various image formats, using the controls available in the upper right corner of the graphic (the hamburger menu).</p>
+<a href="#fnref-4" class="footnote-backref">&#8617;</a>
 </li>
 </ol>
 </div>

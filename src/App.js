@@ -8,6 +8,9 @@ import { Animated } from "react-animated-css";
 import "./App.css";
 
 function App() {
+    // https://authex-0.tsgctp.org:9005/services/capps/access
+    // a-su3@ctpdev.org
+    // a-su3@$435Brannan/3000
 
     const handleClick = (e) => {
         if (e.type === 'click') {
@@ -40,6 +43,18 @@ function App() {
         console.log('showPanels:', showPanel);
     }
 
+
+    // const [User, setUser] = React.useState({
+    //     id: 1,
+    //     name: "ed",
+    //     age: Number,
+    //     edit: false
+    //   }); 
+    //   const handleChange = (e) => {
+    //      const {value, name} = e.target;
+    //      setUser(prev => ({...prev, [name]: val}))
+    //   }
+
     const [previewAnimationState, togglePreviewAnimationState] = useState(true);
     const [previewState, togglePreviewState] = useState(true);
     const addWidget = () => {
@@ -55,9 +70,10 @@ function App() {
     return (
         <div className="App">
             {/* SIDE PANEL */}
-            <Animated
+            {showPanel && (<Animated
                 className="sidePanel"
                 animationIn="bounceInRight"
+                animationOut="bounceOutRight"
                 isVisible={showPanel}
             >
                 {previewState && (<Animated
@@ -140,7 +156,7 @@ function App() {
                     >
                     </iframe>
                 </div>
-            </Animated>
+            </Animated>)}
             {/* side panel */}
 
             {/* HEADER */}
@@ -172,11 +188,6 @@ function App() {
             {/* header */}
 
             {/* <p onClick={handleClick} onContextMenu={handleClick}>Something</p> */}
-            <p>
-                https://authex-0.tsgctp.org:9005/services/capps/access
-                a-su3@ctpdev.org
-                a-su3@$435Brannan/3000
-            </p>
 
             {/* <div id="loginPage" style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '10', background: 'white' }}>
                 <IframeResizer onMessage={onMessage} style={{ height: '100vh', width: '100vw' }} src="http://127.0.0.1:5500/capps.html"></IframeResizer>
