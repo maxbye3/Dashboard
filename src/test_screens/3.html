@@ -23,7 +23,7 @@
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/busyutls/busyutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/numutls/numutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/dtutls/dtutls.js"></script>
-<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node0iqav7g6r7nun619bgnsowim329620-1659725507087.js"></script>
+<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node0shzqg1g0id0613sf405bnao3r31314-1659725520230.js"></script>
 
 <!-- Common, CDN and some local files ... -->
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
@@ -47,8 +47,10 @@
 
 <!-- External libraries or CSS, specififc to an app or group of apps ... -->
 <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/dumbbell.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/lollipop.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <!-- End external libs and CSS ... -->
@@ -59,7 +61,7 @@
 <link href="https://authex-0.tsgctp.org:9001/webapps/static/img/favicon.ico" rel="shortcut icon">
 
 <title>
-(Chart) IWorks Line Items</title>
+(Chart) Org Count by Country</title>
 </head>
 
 <body>
@@ -271,10 +273,10 @@
 <div class="div-capp-small">
 &nbsp;&nbsp;&nbsp;<span id="ctp_user">a-su3@ctpdev.org</span>
 &nbsp;<strong>→</strong>
-&nbsp;<strong>(Chart) IWorks Line Items</strong>
+&nbsp;<strong>(Chart) Org Count by Country</strong>
 &nbsp;<em>Version: 0.82</em>
 &nbsp;<strong>→</strong>
-&nbsp;<em>Statistics on imported line items from IWorks - last 75 days.</em>
+&nbsp;<em>Count of Organizations by Country.</em>
 &nbsp;<strong>→</strong>
 &nbsp; <b><em style="color:blue;">prod/capp-su2</em></b> </div>
 
@@ -294,8 +296,6 @@
 		<button type="button" id="api_service_button" onclick="apiService()" class="pure-button button-small">Access API/Service</button>
 	</div>
 
-<div class="div-capp-small"></div>
-
 <div class="spinner-container"><div id="spinner" class="wave hidden-element"></div></div>
 
 <div id="ctp_dt_adjunct_container" class="div-capp hidden-element">
@@ -304,29 +304,28 @@
 <!-- We need the parent div to child element (table) relationship for the API data updates to function. -->
 <div id="ctp_data_table_parent" class="div-capp hidden-element">
 
+ 
 <table id="ctp_data_table" class="cell-border compact stripe hover" style="width:100%">
 	<thead>
 		<tr>
-			<th>Month Index</th>
-			<th>Month</th>
 			<th>Country</th>
-			<th>Product</th>
-			<th>Line Item Count</th>
-			<th>Total Invoiced</th>
+			<th>Org. Count</th>
+			<th>Log. of Total</th>
+			<th>Name</th>
+			<th>Capital City</th>
+			<th>ISO 2 Code</th>
+			<th>ISO 3 Code</th>
+			<th>Languages</th>
+			<th>IBAN Currency</th>
+			<th>IBAN Code</th>
+			<th>IBAN Num</th>
+			<th>Longitude</th>
+			<th>Latitude</th>
+
 		</tr>
 	</thead>		
 	<tbody>
 			</tbody>
-	<tfoot>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th style="text-align:right"></th>
-			<th style="text-align:right"></th>
-		</tr>
-	</tfoot>
 </table>
 </div>
 
@@ -340,26 +339,27 @@
 <!-- START MARKDOWN TEXT -->  
 <h5 id="overview"><a href="#overview" id="overview">Overview:</a></h5>
 <blockquote>
-<p>This CApp allows one to retrieve data on <em>InterWorks Data Imports as Invoice Line Items</em> from various InterWorks systems into <em>CTP</em>. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></p>
-</blockquote>
-<blockquote>
-<p>The CApp displays imports data from the past seven (75) days in a stacked bar chart. <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup> <sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup></p>
+<p>This CApp displays the distribution of <em>Organizations</em> within the primary CTP datastore, by country, along with other <em>country specific metadata</em>. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup> <sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup> <sup id="fnref-4"><a class="footnote-ref" href="#fn-4">4</a></sup></p>
 </blockquote>
 <!-- END MARKDOWN TEXT -->
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn-1">
-<p>Imports come from various <em>InterWorks</em> as inticated by the <strong>country</strong> label.</p>
+<p>The count of organizations is displayed using the natural logarithm of the actual count.</p>
 <a href="#fnref-1" class="footnote-backref">&#8617;</a>
 </li>
 <li id="fn-2">
-<p>Just hover your pointer over a bar to display the counts.</p>
+<p>The actual count can easily be displayed by using the table filter and a country specific filter.</p>
 <a href="#fnref-2" class="footnote-backref">&#8617;</a>
 </li>
 <li id="fn-3">
-<p>Note that the graph can be viewed independent from the source table, and or exported in various image formats, using the controls available in the upper right corner of the graphic (the hamburger menu).</p>
+<p>Sorting the table will cause the graph to be redrawn based on the sorted data, which can yield a progressive graph rather and the intial <em>random looking</em> graph.</p>
 <a href="#fnref-3" class="footnote-backref">&#8617;</a>
+</li>
+<li id="fn-4">
+<p>Note that the graph can be viewed independent from the source table, and or exported in various image formats, using the controls available in the upper right corner of the graphic (the hamburger menu).</p>
+<a href="#fnref-4" class="footnote-backref">&#8617;</a>
 </li>
 </ol>
 </div>

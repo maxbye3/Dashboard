@@ -123,6 +123,10 @@ nav.navbar .navbar-corner>div .btn {
     background-color: #004873;
 }
 
+.sidePanel{
+    overflow-y: scroll;
+}
+
 .panels{
 height: 200px;
 overflow: hidden;

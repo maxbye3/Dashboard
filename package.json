@@ -9,6 +9,7 @@
     "gridstack": "^2.2.0",
     "iframe-resizer-react": "^1.1.0",
     "react": "^16.13.1",
+    "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },

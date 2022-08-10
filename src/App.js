@@ -3,6 +3,7 @@ import IframeResizer from 'iframe-resizer-react'
 import { GridStack } from 'gridstack';
 import 'gridstack/dist/gridstack.css';
 import './custom.css';
+import { Animated } from "react-animated-css";
 
 import "./App.css";
 
@@ -33,78 +34,137 @@ function App() {
         document.getElementById('loginPage').style.display = 'none';
     }
 
+    const [showPanel, togglePanelState] = useState(false);
+    const togglePanel = () => {
+        togglePanelState(!showPanel);
+        console.log('showPanels:', showPanel);
+    }
+
+    const [previewAnimationState, togglePreviewAnimationState] = useState(true);
+    const [previewState, togglePreviewState] = useState(true);
+    const addWidget = () => {
+        console.log('remove preview');
+        togglePreviewAnimationState(false);
+        setTimeout(() => {
+            togglePreviewState(false);
+        }, 500);
+
+    }
+
 
     return (
         <div className="App">
-
             {/* SIDE PANEL */}
-            <div className="sidePanel">
-                
-                        <div
-                            className="panels"
+            <Animated
+                className="sidePanel"
+                animationIn="bounceInRight"
+                isVisible={showPanel}
+            >
+                {previewState && (<Animated
+                    className="panels"
+                    animationOut="zoomOut"
+                    isVisible={previewAnimationState}
+                >
+                    <div onClick={addWidget}>
+                        <iframe
+                            onClick={addWidget}
+                            title="node"
+                            scrolling="no"
+                            src="http://127.0.0.1:5501/src/test_screens/1.html"
+                            style={{
+                                pointerEvents: 'none',
+                                border: 0,
+                                height: '627px',
+                                transformOrigin: 'top left',
+                                transform: 'scale(.5,.5)',
+                                marginTop: '-105px',
+                            }}
                         >
-                            <iframe
-                                title="node"
-                                scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/nodes.html"
-                                style={{
-                                    border: 0,
-                                    pointerEvents: 'none',
-                                    height: '627px',
-                                    transformOrigin: 'top left',
-                                    transform: 'scale(.5,.5)',
-                                    marginTop: '-105px',
-                                }}
-                            >
-                            </iframe>
-                        </div>
-                
-                        <div
-                            className="panels"
-                        >
-                            <iframe
-                                title="node"
-                                scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/nodes.html"
-                                style={{
-                                    border: 0,
-                                    pointerEvents: 'none',
-                                    height: '627px',
-                                    transformOrigin: 'top left',
-                                    transform: 'scale(.5,.5)',
-                                    marginTop: '-105px',
-                                }}
-                            >
-                            </iframe>
-                        </div>
+                        </iframe>
+                    </div>
+                </Animated>)}
 
+                <div
+                    className="panels"
+                >
+                    <iframe
+                        title="node"
+                        scrolling="no"
+                        src="http://127.0.0.1:5501/src/test_screens/2.html"
+                        style={{
+                            border: 0,
+                            pointerEvents: 'none',
+                            height: '627px',
+                            transformOrigin: 'top left',
+                            transform: 'scale(.5,.5)',
+                            marginTop: '-105px',
+                        }}
+                    >
+                    </iframe>
+                </div>
 
+                <div
+                    className="panels"
+                >
+                    <iframe
+                        title="node"
+                        scrolling="no"
+                        src="http://127.0.0.1:5501/src/test_screens/3.html"
+                        style={{
+                            border: 0,
+                            pointerEvents: 'none',
+                            height: '627px',
+                            transformOrigin: 'top left',
+                            transform: 'scale(.5,.5)',
+                            marginTop: '-105px',
+                        }}
+                    >
+                    </iframe>
+                </div>
 
-            </div>
+                <div
+                    className="panels"
+                >
+                    <iframe
+                        title="node"
+                        scrolling="no"
+                        src="http://127.0.0.1:5501/src/test_screens/4.html"
+                        style={{
+                            border: 0,
+                            pointerEvents: 'none',
+                            height: '627px',
+                            transformOrigin: 'top left',
+                            transform: 'scale(.5,.5)',
+                            marginTop: '-105px',
+                        }}
+                    >
+                    </iframe>
+                </div>
+            </Animated>
             {/* side panel */}
 
             {/* HEADER */}
-            <nav class="navbar navbar-fixed-top nav-one DPOFix margin-live">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/"></a>
-                    <div class="dashboardContainer">
+            <nav className="navbar navbar-fixed-top nav-one DPOFix margin-live">
+                <div className="navbar-header">
+                    <a className="navbar-brand" href="/"></a>
+                    <div className="dashboardContainer">
                         <p >Dashboard</p>
                     </div>
 
                 </div>
 
                 <div>
-                    <div id="signIn" class="navbar-corner">
-                        <div class="flex-buttons">
-                            <div class="btn btn-black-white" id="SignInID">
+                    <div id="signIn" className="navbar-corner">
+                        <div className="flex-buttons">
+                            <div className="btn btn-black-white" id="SignInID" onClick={togglePanel}>
                                 Add
                             </div>
-                            <div class="btn btn-black-white-inverse testCSS" id="JoinInID">
+                            <div className="btn btn-black-white-inverse testCSS" id="JoinInID">
                                 Delete
                             </div>
                         </div>
                     </div>
-                    <div id="joinIn" class="navbar-corner">
+                    <div id="joinIn" className="navbar-corner">
 
                     </div>
                 </div>
@@ -133,7 +193,7 @@ function App() {
                             <iframe
                                 title="node"
                                 scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/nodes.html"
+                                src="http://127.0.0.1:5501/src/test_screens/1.html"
                                 style={{
                                     pointerEvents: 'none',
                                     height: '627px',
