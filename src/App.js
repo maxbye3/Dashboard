@@ -47,6 +47,7 @@ function App() {
         animation: true,
         preview: true
     });
+
     const addWidget = () => {
         console.log('remove preview');
         togglePreviewState(prev => ({...prev, animation: false}))
@@ -55,7 +56,6 @@ function App() {
         }, 500);
 
     }
-
 
     return (
         <div className="App">
@@ -162,12 +162,19 @@ function App() {
                 <div>
                     <div id="signIn" className="navbar-corner">
                         <div className="flex-buttons">
-                            <div className="btn btn-black-white" id="SignInID" onClick={togglePanel}>
-                                Add
-                            </div>
-                            <div className="btn btn-black-white-inverse testCSS" id="JoinInID">
-                                Delete
-                            </div>
+                            {showPanel && (<div className="btn btn-black-white" id="GoBack" onClick={togglePanel}>
+                                Done
+                            </div>)}
+                            {!showPanel && (
+                                <>
+                                <div className="btn btn-black-white" id="Add" onClick={togglePanel}>
+                                    Add
+                                </div>
+                                <div className="btn btn-black-white-inverse testCSS" id="Delete">
+                                    Delete
+                                </div>
+                                </>
+                            )}
                         </div>
                     </div>
                     <div id="joinIn" className="navbar-corner">
