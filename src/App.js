@@ -13,22 +13,19 @@ function App() {
     // a-su3@$435Brannan/3000
     let toDelete = false;
 
-    useEffect(() => {        
+    useEffect(() => {
         document.getElementById("nodePreview").addEventListener("click", addWidget);
     });
 
     const turnNodeOff = () => {
         console.log('turn off');
         toggleWidgetState(false);
-        togglePreviewState(prev => ({...prev, preview: true}))
-        togglePreviewState(prev => ({...prev, animation: true}))
+        togglePreviewState(prev => ({ ...prev, preview: true }))
+        togglePreviewState(prev => ({ ...prev, animation: true }))
     }
 
-    const deleteMode = () => {
-        toDelete = true;
-        toggleEditMode(!editMode);
 
-    }
+
 
     // const iframeRef = useRef(null)
     // const [messageData, setMessageData] = useState()
@@ -44,6 +41,13 @@ function App() {
 
     const [showPanel, togglePanelState] = useState(false);
     const [editMode, toggleEditMode] = useState(false);
+    const [canDelete, toggleDeleteMode] = useState(false);
+
+    const intDeleteMode = () => {
+        toggleDeleteMode(true);
+        toggleEditMode(!editMode);
+    }
+
     const togglePanel = (addMode = false) => {
         togglePanelState(addMode);
         toggleEditMode(!editMode);
@@ -63,9 +67,9 @@ function App() {
         GridStack.init();
 
         // remove preview
-        togglePreviewState(prev => ({...prev, animation: false}))
+        togglePreviewState(prev => ({ ...prev, animation: false }))
         setTimeout(() => {
-            togglePreviewState(prev => ({...prev, preview: false}))
+            togglePreviewState(prev => ({ ...prev, preview: false }))
         }, 500);
 
     }
@@ -174,17 +178,17 @@ function App() {
                 <div>
                     <div id="signIn" className="navbar-corner">
                         <div className="flex-buttons">
-                            {editMode && (<div className="btn btn-black-white" id="GoBack" onClick={() => {togglePanel()}}>
+                            {editMode && (<div className="btn btn-black-white" id="GoBack" onClick={() => { togglePanel() }}>
                                 Done
                             </div>)}
                             {!editMode && (
                                 <>
-                                <div className="btn btn-black-white" id="Add" onClick={() => {togglePanel(true)}}>
-                                    Add
-                                </div>
-                                <div className="btn btn-black-white-inverse" id="Delete" onClick={deleteMode}>
-                                    Delete
-                                </div>
+                                    <div className="btn btn-black-white" id="Add" onClick={() => { togglePanel(true) }}>
+                                        Add
+                                    </div>
+                                    <div className="btn btn-black-white-inverse" id="Delete" onClick={intDeleteMode}>
+                                        Delete
+                                    </div>
                                 </>
                             )}
                         </div>
@@ -195,83 +199,33 @@ function App() {
                 </div>
             </nav>
             {/* header */}
-
-            {/* <p onClick={handleClick} onContextMenu={handleClick}>Something</p> */}
-
             {/* <div id="loginPage" style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '10', background: 'white' }}>
                 <IframeResizer onMessage={onMessage} style={{ height: '100vh', width: '100vw' }} src="http://127.0.0.1:5500/capps.html"></IframeResizer>
             </div> */}
-
-            <div className="grid-stack">
-                {widgetState && (<div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="6">
-                    <div className={`grid-stack-item-content ${toDelete ? 'highlight-grid': ''}`} onClick={turnNodeOff}>
-                        <iframe
-                            title="node"
-                            scrolling="no"
-                            src="http://127.0.0.1:5501/src/test_screens/1.html"
-                            style={{
-                                pointerEvents: 'none',
-                                height: '670px',
-                                // transformOrigin: 'top left',
-                                // transform: 'scale(2,2)',
-                                marginTop: '-195px',
-                                marginLeft: '-27px',
-                                marginRight: '30px',
-                                width: '34vw'
-                            }}
-                        >
-                        </iframe>
-                    </div>
-                </div>)}
-                {/* <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="3">
-                    <div className="grid-stack-item-content">
-                        <div
-                            style={{
-                                overflow: 'hidden',
-                            }}
-                        >
+            <section class="grid-container">
+                <div className="grid-stack">
+                    {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="6">
+                        <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
                             <iframe
                                 title="node"
                                 scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/iworkslineitemimports.html"
+                                src="http://127.0.0.1:5501/src/test_screens/1.html"
                                 style={{
                                     pointerEvents: 'none',
-                                    height: '635px',
-                                    marginTop: '-180px',
+                                    height: '670px',
+                                    // transformOrigin: 'top left',
+                                    // transform: 'scale(2,2)',
+                                    marginTop: '-195px',
                                     marginLeft: '-27px',
                                     marginRight: '30px',
-                                    width: '38vw'
+                                    width: '34vw'
                                 }}
                             >
                             </iframe>
                         </div>
-                    </div>
+                    </div>)}
                 </div>
-                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="3">
-                    <div className="grid-stack-item-content">
-                        <div
-                            style={{
-                                overflow: 'hidden',
-                            }}
-                        >
-                            <iframe
-                                title="node"
-                                scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/orgcountbycountry.html"
-                                style={{
-                                    pointerEvents: 'none',
-                                    height: '615px',
-                                    marginTop: '-180px',
-                                    marginLeft: '-27px',
-                                    marginRight: '30px',
-                                    width: '38vw'
-                                }}
-                            >
-                            </iframe>
-                        </div>
-                    </div>
-                </div> */}
-            </div>
+            </section>
         </div>
     );
 }
