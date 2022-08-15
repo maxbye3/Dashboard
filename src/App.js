@@ -11,6 +11,7 @@ function App() {
     // https://authex-0.tsgctp.org:9005/services/capps/access
     // a-su3@ctpdev.org
     // a-su3@$435Brannan/3000
+    let toDelete = false;
 
     useEffect(() => {        
         document.getElementById("nodePreview").addEventListener("click", addWidget);
@@ -21,6 +22,12 @@ function App() {
         toggleWidgetState(false);
         togglePreviewState(prev => ({...prev, preview: true}))
         togglePreviewState(prev => ({...prev, animation: true}))
+    }
+
+    const deleteMode = () => {
+        toDelete = true;
+        toggleEditMode(!editMode);
+
     }
 
     // const iframeRef = useRef(null)
@@ -36,9 +43,10 @@ function App() {
     // }
 
     const [showPanel, togglePanelState] = useState(false);
-    const togglePanel = () => {
-        togglePanelState(!showPanel);
-        console.log('showPanels:', showPanel);
+    const [editMode, toggleEditMode] = useState(false);
+    const togglePanel = (addMode = false) => {
+        togglePanelState(addMode);
+        toggleEditMode(!editMode);
     }
 
     const [previewState, togglePreviewState] = useState({
@@ -166,15 +174,15 @@ function App() {
                 <div>
                     <div id="signIn" className="navbar-corner">
                         <div className="flex-buttons">
-                            {showPanel && (<div className="btn btn-black-white" id="GoBack" onClick={togglePanel}>
+                            {editMode && (<div className="btn btn-black-white" id="GoBack" onClick={() => {togglePanel()}}>
                                 Done
                             </div>)}
-                            {!showPanel && (
+                            {!editMode && (
                                 <>
-                                <div className="btn btn-black-white" id="Add" onClick={togglePanel}>
+                                <div className="btn btn-black-white" id="Add" onClick={() => {togglePanel(true)}}>
                                     Add
                                 </div>
-                                <div onClick={turnNodeOff} className="btn btn-black-white-inverse testCSS" id="Delete">
+                                <div className="btn btn-black-white-inverse" id="Delete" onClick={deleteMode}>
                                     Delete
                                 </div>
                                 </>
@@ -196,7 +204,7 @@ function App() {
 
             <div className="grid-stack">
                 {widgetState && (<div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="6">
-                    <div className="grid-stack-item-content">
+                    <div className={`grid-stack-item-content ${toDelete ? 'highlight-grid': ''}`} onClick={turnNodeOff}>
                         <iframe
                             title="node"
                             scrolling="no"
