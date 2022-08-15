@@ -14,7 +14,7 @@ function App() {
 
     // Initialize Gridstack inside useEffect so that DOM is rendered when its initialized
     useEffect(() => {        
-        document.getElementById("myBtn").addEventListener("click", addWidget);
+        document.getElementById("nodePreview").addEventListener("click", addWidget);
     });
 
     // const iframeRef = useRef(null)
@@ -77,7 +77,7 @@ function App() {
                     isVisible={previewState.animation}
                 >
                     {/* className={`banner ${active ? "active" : ""}`} */}
-                    <div id="myBtn">
+                    <div id="nodePreview">
                         <iframe
                             onClick={addWidget}
                             title="node"

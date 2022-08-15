@@ -73,6 +73,10 @@ nav.navbar .navbar-corner#signIn>div {
 .grid-stack-item-content{
     /* overflow: hidden; */
 }
+
+.shrunk-preview{
+    height: 0px !important;
+}
 /* grid stack */
 
 .btn {
