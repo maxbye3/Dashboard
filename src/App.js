@@ -43,25 +43,15 @@ function App() {
         console.log('showPanels:', showPanel);
     }
 
-
-    // const [User, setUser] = React.useState({
-    //     id: 1,
-    //     name: "ed",
-    //     age: Number,
-    //     edit: false
-    //   }); 
-    //   const handleChange = (e) => {
-    //      const {value, name} = e.target;
-    //      setUser(prev => ({...prev, [name]: val}))
-    //   }
-
-    const [previewAnimationState, togglePreviewAnimationState] = useState(true);
-    const [previewState, togglePreviewState] = useState(true);
+    const [previewState, togglePreviewState] = useState({
+        animation: true,
+        preview: true
+    });
     const addWidget = () => {
         console.log('remove preview');
-        togglePreviewAnimationState(false);
+        togglePreviewState(prev => ({...prev, animation: false}))
         setTimeout(() => {
-            togglePreviewState(false);
+            togglePreviewState(prev => ({...prev, preview: false}))
         }, 500);
 
     }
@@ -76,10 +66,10 @@ function App() {
                 animationOut="bounceOutRight"
                 isVisible={showPanel}
             >
-                {previewState && (<Animated
+                {previewState.preview && (<Animated
                     className="panels"
                     animationOut="zoomOut"
-                    isVisible={previewAnimationState}
+                    isVisible={previewState.animation}
                 >
                     <div onClick={addWidget}>
                         <iframe
