@@ -12,22 +12,9 @@ function App() {
     // a-su3@ctpdev.org
     // a-su3@$435Brannan/3000
 
-    const handleClick = (e) => {
-        if (e.type === 'click') {
-            console.log('Left click');
-        } else if (e.type === 'contextmenu') {
-            console.log('Right click');
-        }
-    };
-
     // Initialize Gridstack inside useEffect so that DOM is rendered when its initialized
-    useEffect(() => {
-        
-        setTimeout(() => {
-            toggleWidgetState(true);
-            var grid = GridStack.init();
-        }, 500);
-
+    useEffect(() => {        
+        document.getElementById("myBtn").addEventListener("click", addWidget);
     });
 
     // const iframeRef = useRef(null)
@@ -64,6 +51,7 @@ function App() {
 
         // add widget to screen
         toggleWidgetState(true);
+        var grid = GridStack.init();
 
 
         // remove preview
@@ -77,18 +65,18 @@ function App() {
     return (
         <div className="App">
             {/* SIDE PANEL */}
-            {showPanel && (<Animated
+            <Animated
                 className="sidePanel"
                 animationIn="bounceInRight"
                 animationOut="bounceOutRight"
                 isVisible={showPanel}
             >
-                {previewState.preview && (<Animated
+                <Animated
                     className="panels"
                     animationOut="zoomOut"
                     isVisible={previewState.animation}
                 >
-                    <div onClick={addWidget}>
+                    <div onClick={addWidget} id="myBtn">
                         <iframe
                             onClick={addWidget}
                             title="node"
@@ -105,7 +93,7 @@ function App() {
                         >
                         </iframe>
                     </div>
-                </Animated>)}
+                </Animated>
 
                 <div
                     className="panels"
@@ -163,7 +151,7 @@ function App() {
                     >
                     </iframe>
                 </div>
-            </Animated>)}
+            </Animated>
             {/* side panel */}
 
             {/* HEADER */}
