@@ -12,10 +12,16 @@ function App() {
     // a-su3@ctpdev.org
     // a-su3@$435Brannan/3000
 
-    // Initialize Gridstack inside useEffect so that DOM is rendered when its initialized
     useEffect(() => {        
         document.getElementById("nodePreview").addEventListener("click", addWidget);
     });
+
+    const turnNodeOff = () => {
+        console.log('turn off');
+        toggleWidgetState(false);
+        togglePreviewState(prev => ({...prev, preview: true}))
+        togglePreviewState(prev => ({...prev, animation: true}))
+    }
 
     // const iframeRef = useRef(null)
     // const [messageData, setMessageData] = useState()
@@ -39,11 +45,6 @@ function App() {
         animation: true,
         preview: true
     });
-    
-    // const [widgetState, toggleWidgetState] = useState({
-    //     animation: true,
-    //     preview: true
-    // });
 
     const [widgetState, toggleWidgetState] = useState(false);
 
@@ -51,8 +52,7 @@ function App() {
 
         // add widget to screen
         toggleWidgetState(true);
-        var grid = GridStack.init();
-
+        GridStack.init();
 
         // remove preview
         togglePreviewState(prev => ({...prev, animation: false}))
@@ -76,7 +76,6 @@ function App() {
                     animationOut="zoomOut"
                     isVisible={previewState.animation}
                 >
-                    {/* className={`banner ${active ? "active" : ""}`} */}
                     <div id="nodePreview">
                         <iframe
                             onClick={addWidget}
@@ -162,7 +161,6 @@ function App() {
                     <div className="dashboardContainer">
                         <p >Dashboard</p>
                     </div>
-
                 </div>
 
                 <div>
@@ -176,7 +174,7 @@ function App() {
                                 <div className="btn btn-black-white" id="Add" onClick={togglePanel}>
                                     Add
                                 </div>
-                                <div className="btn btn-black-white-inverse testCSS" id="Delete">
+                                <div onClick={turnNodeOff} className="btn btn-black-white-inverse testCSS" id="Delete">
                                     Delete
                                 </div>
                                 </>
