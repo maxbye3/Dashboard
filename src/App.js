@@ -72,11 +72,12 @@ function App() {
                 isVisible={showPanel}
             >
                 <Animated
-                    className="panels"
+                    className={`panels ${!previewState.preview ? "shrunk-preview" : ""}`}
                     animationOut="zoomOut"
                     isVisible={previewState.animation}
                 >
-                    <div onClick={addWidget} id="myBtn">
+                    {/* className={`banner ${active ? "active" : ""}`} */}
+                    <div id="myBtn">
                         <iframe
                             onClick={addWidget}
                             title="node"
