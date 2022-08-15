@@ -22,20 +22,25 @@ function App() {
 
     // Initialize Gridstack inside useEffect so that DOM is rendered when its initialized
     useEffect(() => {
-        var grid = GridStack.init();
+        
+        setTimeout(() => {
+            toggleWidgetState(true);
+            var grid = GridStack.init();
+        }, 500);
+
     });
 
-    const iframeRef = useRef(null)
-    const [messageData, setMessageData] = useState()
+    // const iframeRef = useRef(null)
+    // const [messageData, setMessageData] = useState()
 
-    const onResized = data => {
-        console.log('ONRESIZED', data);
-        setMessageData(data);
-    }
+    // const onResized = data => {
+    //     console.log('ONRESIZED', data);
+    //     setMessageData(data);
+    // }
 
-    const onMessage = data => {
-        document.getElementById('loginPage').style.display = 'none';
-    }
+    // const onMessage = data => {
+    //     document.getElementById('loginPage').style.display = 'none';
+    // }
 
     const [showPanel, togglePanelState] = useState(false);
     const togglePanel = () => {
@@ -47,9 +52,21 @@ function App() {
         animation: true,
         preview: true
     });
+    
+    // const [widgetState, toggleWidgetState] = useState({
+    //     animation: true,
+    //     preview: true
+    // });
+
+    const [widgetState, toggleWidgetState] = useState(false);
 
     const addWidget = () => {
-        console.log('remove preview');
+
+        // add widget to screen
+        toggleWidgetState(true);
+
+
+        // remove preview
         togglePreviewState(prev => ({...prev, animation: false}))
         setTimeout(() => {
             togglePreviewState(prev => ({...prev, preview: false}))
@@ -191,32 +208,26 @@ function App() {
             </div> */}
 
             <div className="grid-stack">
-                <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="3">
+                {widgetState && (<div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="6">
                     <div className="grid-stack-item-content">
-                        <div
+                        <iframe
+                            title="node"
+                            scrolling="no"
+                            src="http://127.0.0.1:5501/src/test_screens/1.html"
                             style={{
-                                overflow: 'hidden',
+                                pointerEvents: 'none',
+                                height: '670px',
+                                // transformOrigin: 'top left',
+                                // transform: 'scale(2,2)',
+                                marginTop: '-195px',
+                                marginLeft: '-27px',
+                                marginRight: '30px',
+                                width: '34vw'
                             }}
                         >
-                            <iframe
-                                title="node"
-                                scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/1.html"
-                                style={{
-                                    pointerEvents: 'none',
-                                    height: '627px',
-                                    // transformOrigin: 'top left',
-                                    // transform: 'scale(2,2)',
-                                    marginTop: '-195px',
-                                    marginLeft: '-27px',
-                                    marginRight: '30px',
-                                    width: '34vw'
-                                }}
-                            >
-                            </iframe>
-                        </div>
+                        </iframe>
                     </div>
-                </div>
+                </div>)}
                 {/* <div className="grid-stack-item border-dark" data-gs-width="4" data-gs-height="3">
                     <div className="grid-stack-item-content">
                         <div

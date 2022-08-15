@@ -59,6 +59,21 @@ nav.navbar .navbar-corner#signIn>div {
     margin-top: 16px;
 }
 
+/*
+* GRID STACK
+*/
+.grid-stack{
+    top: 50px;
+}
+
+.grid-stack-item{
+    height: 450px;
+}
+
+.grid-stack-item-content{
+    /* overflow: hidden; */
+}
+/* grid stack */
 
 .btn {
     display: inline-block;
