@@ -69,9 +69,6 @@ function App() {
         preview: true
     });
 
-    const [widgetState, toggleWidgetState] = useState(false);
-
-
     const deleteNode = () => {
         if (!canDelete) {
             return;
@@ -87,7 +84,7 @@ function App() {
 
         // add node to screen
         var items = [
-            {content: 'my first widget'}, // will default to location (0,0) and 1x1
+            {content: 'my first node'}, // will default to location (0,0) and 1x1
             {width: 3, height: 3, content: '<iframe title="nodesGraph" id="nodesGraph" src="http://127.0.0.1:5501/src/test_screens/1.html" class="moduleContainer"></iframe>'},
 
             
@@ -226,30 +223,8 @@ function App() {
             {/* <div id="loginPage" style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '10', background: 'white' }}>
                 <IframeResizer onMessage={onMessage} style={{ height: '100vh', width: '100vw' }} src="http://127.0.0.1:5500/capps.html"></IframeResizer>
             </div> */}
-            <section className="grid-container">
-                <div className="grid-stack">
-                    {/* {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
-                        <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={deleteNode}>
-                            <iframe
-                                title="node"
-                                scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/1.html"
-                                style={{
-                                    pointerEvents: 'none',
-                                    height: '665px',
-                                    transformOrigin: '-195px -27px',
-                                    transform: 'scale(2,2)',
-                                    marginTop: '-195px',
-                                    marginLeft: '-27px',
-                                    marginRight: '30px',
-                                    width: '34vw'
-                                }}
-                            >
-                            </iframe>
-                        </div>
-                    </div>)} */}
-                </div>
-            </section>
+            {/* NODES */}
+            <div className="grid-stack"></div>
         </div>
     );
 }
