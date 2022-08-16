@@ -4,9 +4,7 @@ import { GridStack } from 'gridstack';
 import 'gridstack/dist/gridstack.css';
 import './custom.css';
 import { Animated } from "react-animated-css";
-
 import "./App.css";
-import jquery from "gridstack/dist/jq/jquery";
 
 function App() {
     // https://authex-0.tsgctp.org:9005/services/capps/access
@@ -20,19 +18,28 @@ function App() {
 
     useEffect(() => {
         const grid = GridStack.init();
-        // let zoomDiff = {};
-        let scale = {x: 1, y:1};
         document.getElementById("nodePreview").addEventListener("click", addWidget);
-        
+
+        const toggleModuleInteractivity = (state) => {
+            const modules = document.getElementsByClassName('moduleContainer');
+            for (var i = 0; i < modules.length; i++) {
+                modules[i].style.pointerEvents = state;
+            }
+        }
+
+        grid.on('resizestart', () => {
+            toggleModuleInteractivity('none');
+        });
+
         grid.on('resizestop', (event, el) => {
             let node = el.gridstackNode;
-             setScaleX(node.height/3);
-             setScaleY(node.width/3);
-            console.log(scaleX, scaleY);
+            setScaleX(node.height / 3);
+            setScaleY(node.width / 3);
+            toggleModuleInteractivity('initial');
         });
-        
+
     });
-    
+
 
     // const iframeRef = useRef(null)
     // const [messageData, setMessageData] = useState()
@@ -70,7 +77,7 @@ function App() {
 
 
     const turnNodeOff = () => {
-        if(!canDelete){
+        if (!canDelete) {
             return;
         }
         toggleWidgetState(false);
@@ -223,7 +230,7 @@ function App() {
                                 title="node"
                                 scrolling="no"
                                 src="http://127.0.0.1:5501/src/test_screens/1.html"
-                                className="iframeTest"
+                                className="moduleContainer"
                                 style={{
                                     transform: `scale(${scaleY}, ${scaleX})`
                                 }}

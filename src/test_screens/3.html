@@ -23,7 +23,7 @@
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/busyutls/busyutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/numutls/numutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/dtutls/dtutls.js"></script>
-<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node0shzqg1g0id0613sf405bnao3r31314-1659725520230.js"></script>
+<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node05ndzhr93nxt1xa1g5mup10gd18330-1660328500687.js"></script>
 
 <!-- Common, CDN and some local files ... -->
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
@@ -51,6 +51,7 @@
 <script type="text/javascript" src="https://code.highcharts.com/modules/dumbbell.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/lollipop.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/offline-exporting.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <!-- End external libs and CSS ... -->
@@ -61,7 +62,7 @@
 <link href="https://authex-0.tsgctp.org:9001/webapps/static/img/favicon.ico" rel="shortcut icon">
 
 <title>
-(Chart) Org Count by Country</title>
+Nodes</title>
 </head>
 
 <body>
@@ -73,173 +74,159 @@
 <div style="z-index:9; width:98%; position: fixed;" id="ctp_header_menu" class="capp-menu pure-menu-horizontal"><ul class="pure-menu-list">
 <li class="pure-menu-item pure-menu-allow-hover"><a href="https://authex-0.tsgctp.org:9007/services/capps/directory/" class="pure-menu-link">Home</a></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="API_menu" class="pure-menu-link">API</a>
+<a href="#" id="CTP-API_menu" class="pure-menu-link">CTP-API</a>
 <ul class="pure-menu-children">
-<li id="a95860d1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apiglobalendpoints/" class="pure-menu-link">API Endpoints Global</a></li>
-<li id="d247ba43" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apilocalendpoints/" class="pure-menu-link">API Endpoints Local</a></li>
-<li id="7d805692" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apilist/" class="pure-menu-link">API List</a></li>
-<li id="2918dece" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ctpapitest/" class="pure-menu-link">API Test Interface</a></li>
-<li id="4b9198b5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apientityaddapp/" class="pure-menu-link">Add API Account</a></li>
-<li id="7aab3ee1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apientityrenewapp/" class="pure-menu-link">Renew API Account Keys</a></li>
+<li id="55e53764" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apiglobalendpoints/" class="pure-menu-link">Endpoints Global</a></li>
+<li id="d6987318" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apilocalendpoints/" class="pure-menu-link">Endpoints Local</a></li>
+<li id="567faefa" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apilist/" class="pure-menu-link">List</a></li>
+<li id="2df79048" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ctpapitest/" class="pure-menu-link">Test Interface</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Account_menu" class="pure-menu-link">Account</a>
+<a href="#" id="CTP-Accounts_menu" class="pure-menu-link">CTP-Accounts</a>
 <ul class="pure-menu-children">
-<li id="727314f5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/sessions/" class="pure-menu-link">(Chart) Sessions</a></li>
-<li id="a5f290d1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityaddapp/" class="pure-menu-link">Add Identity</a></li>
-<li id="460e5538" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentitydisable/" class="pure-menu-link">Disable Identity</a></li>
-<li id="8ac644eb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/authobjecteditorapp/" class="pure-menu-link">Editor for Account Auth Objects</a></li>
-<li id="148812db" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/permissionseditorapp/" class="pure-menu-link">Editor for Account Permissions</a></li>
-<li id="5ad1513c" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityenable/" class="pure-menu-link">Enable Identity</a></li>
-<li id="83341dd6" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityretrieve/" class="pure-menu-link">Enabled Identity Search</a></li>
-<li id="a785f5d7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityexists/" class="pure-menu-link">Identity Exists</a></li>
-<li id="d98ac53b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentitypwdapp/" class="pure-menu-link">Identity Password Change</a></li>
-<li id="03a58d5d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentitypermissions/" class="pure-menu-link">Identity Permission Table</a></li>
-<li id="469de1bd" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/preauth/" class="pure-menu-link">Pre-Authentication</a></li>
-<li id="3e95e047" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/transfersessiontoken/" class="pure-menu-link">Transfer Session Token</a></li>
+<li id="11800ec5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apientityaddapp/" class="pure-menu-link">Add API Account</a></li>
+<li id="fba565ad" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityaddapp/" class="pure-menu-link">Add Identity</a></li>
+<li id="adc14c47" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentitydisable/" class="pure-menu-link">Disable Identity</a></li>
+<li id="13665899" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/authobjecteditorapp/" class="pure-menu-link">Editor for Account Auth Objects</a></li>
+<li id="bdc5dad8" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/permissionseditorapp/" class="pure-menu-link">Editor for Account Permissions</a></li>
+<li id="cb07593a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/emailcompromisedcheck/" class="pure-menu-link">Email Address Compromise Check</a></li>
+<li id="9bfe11f9" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityenable/" class="pure-menu-link">Enable Identity</a></li>
+<li id="d7f65774" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityretrieve/" class="pure-menu-link">Enabled Identity Search</a></li>
+<li id="66aab512" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentityexists/" class="pure-menu-link">Identity Exists</a></li>
+<li id="e106c5b5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentitypwdapp/" class="pure-menu-link">Identity Password Change</a></li>
+<li id="099daf7a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/personentitypermissions/" class="pure-menu-link">Identity Permission Table</a></li>
+<li id="8a51c78b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/preauth/" class="pure-menu-link">Pre-Authentication</a></li>
+<li id="a4cc4a60" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/apientityrenewapp/" class="pure-menu-link">Renew API Account Keys</a></li>
+<li id="88adcbb8" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/sessions/" class="pure-menu-link">Sessions</a></li>
+<li id="22886bb1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/transfersessiontoken/" class="pure-menu-link">Transfer Session Token</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="CCMS_menu" class="pure-menu-link">CCMS</a>
+<a href="#" id="CTP-Node_menu" class="pure-menu-link">CTP-Node</a>
 <ul class="pure-menu-children">
-<li id="ce96cdea" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ccmslist/" class="pure-menu-link">Content Mgmt. Services (CCMS) Lister</a></li>
-<li id="0f0e1047" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ccmsupload/" class="pure-menu-link">Content Mgmt. Services (CCMS) Upload</a></li>
+<li id="e735c6c0" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/workers/" class="pure-menu-link">Active Workers</a></li>
+<li id="d5acd3ba" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodealtconf/" class="pure-menu-link">Alt Conf</a></li>
+<li id="c426b7f6" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cqueues/" class="pure-menu-link">CQueues</a></li>
+<li id="4c04c269" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/fileslist/" class="pure-menu-link">List of Files</a></li>
+<li id="e63fdc29" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/logs/" class="pure-menu-link">Local Log Statements</a></li>
+<li id="bf5f9e41" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodelocks/" class="pure-menu-link">Lock Files</a></li>
+<li id="35d9af4a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodestats/" class="pure-menu-link">Memory Usage</a></li>
+<li id="74ac6338" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ports/" class="pure-menu-link">Ports In-Use Mapping</a></li>
+<li id="4f85db43" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/certexpiredate/" class="pure-menu-link">SSL/TLS Certificate Expiration</a></li>
+<li id="bafdbcef" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/certviewer/" class="pure-menu-link">SSL/TLS Certificate Viewer</a></li>
+<li id="97044efc" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/workerlist/" class="pure-menu-link">Workers List</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Constraints_menu" class="pure-menu-link">Constraints</a>
+<a href="#" id="CTP-Platform_menu" class="pure-menu-link">CTP-Platform</a>
 <ul class="pure-menu-children">
-<li id="11d52f52" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constraints/" class="pure-menu-link">Constraint Evaluation</a></li>
-<li id="8f86f606" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constraintfile/" class="pure-menu-link">Constraint File Preview</a></li>
-<li id="b5e18993" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constraintslist/" class="pure-menu-link">Constraints File Listing</a></li>
-<li id="50eb1cb2" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constrainteditorapp/" class="pure-menu-link">Editor for Constraints</a></li>
+<li id="a3bfc232" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/capplist/" class="pure-menu-link">CApp Names and ID Grid/Sheet</a></li>
+<li id="ba3e6759" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/changelogapp/" class="pure-menu-link">CTP Change Log</a></li>
+<li id="62fe8ca7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ctpdocumentationapp/" class="pure-menu-link">CTP Documentation</a></li>
+<li id="ed9d8ea1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/dns/" class="pure-menu-link">DNS Entry Mapping</a></li>
+<li id="3d87b5d8" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytimewtfilterroutes/" class="pure-menu-link">Elucidate API by Route, Filtered</a></li>
+<li id="2d3fe9c5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytime/" class="pure-menu-link">Elucidate API by Time</a></li>
+<li id="45fe288d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytimewtfilter/" class="pure-menu-link">Elucidate API by Time, Filtered</a></li>
+<li id="d768aeb1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytimewtfiltercounted/" class="pure-menu-link">Elucidate API by User, Filtered</a></li>
+<li id="4bc07f5d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodes/" class="pure-menu-link">Nodes</a></li>
+<li id="9f93329e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/queuesgraph/" class="pure-menu-link">Queues Graph</a></li>
+<li id="64e3a4d2" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/s3/" class="pure-menu-link">S3 Bucket Listing</a></li>
+<li id="aaae0da2" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/sqs/" class="pure-menu-link">SQS Queues Listing</a></li>
+<li id="bb0be331" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/schemaforms/" class="pure-menu-link">Schema Forms</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Email_menu" class="pure-menu-link">Email</a>
+<a href="#" id="CTP-Query_menu" class="pure-menu-link">CTP-Query</a>
 <ul class="pure-menu-children">
-<li id="0285ef2f" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/dataarchiveinbox/" class="pure-menu-link">Data Archive Inbox</a></li>
-<li id="3c4fb2e0" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/inbox/" class="pure-menu-link">Domain Inbox</a></li>
-<li id="34bccb64" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/emailtemplateeditorapp/" class="pure-menu-link">Editor for Email Templates</a></li>
-<li id="361d99ae" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/emailcompromisedcheck/" class="pure-menu-link">Email Address Compromise Check</a></li>
-<li id="10a7cd4d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/emailtemplatelist/" class="pure-menu-link">Email Template File Listing</a></li>
+<li id="ad79f3f1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cdfhydra/" class="pure-menu-link">CDF Hydra Multi-Query</a></li>
+<li id="8f6cebf9" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cdforgquery/" class="pure-menu-link">CDF Organization Query</a></li>
+<li id="49db0470" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/findentities/" class="pure-menu-link">Find Entities in Text</a></li>
+<li id="b372860f" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/findkeyphrases/" class="pure-menu-link">Find Key Phrases in Text</a></li>
+<li id="865c976a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/irsbmf/" class="pure-menu-link">IRS BMF Lookup</a></li>
+<li id="dd7529ff" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orgcountprojectionbycountry/" class="pure-menu-link">Org Count Global View</a></li>
+<li id="0ba4d52b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orgcountbycountry/" class="pure-menu-link">Org Count by Country</a></li>
+<li id="a714db85" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orgcountbychange/" class="pure-menu-link">Org Data Updates by Country</a></li>
+<li id="88a54835" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/luorgobjects/" class="pure-menu-link">Organization Lookup and Object Viewer</a></li>
+<li id="138dcf25" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tradegov/" class="pure-menu-link">Trade.gov Watch List LookUp</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Imports_menu" class="pure-menu-link">Imports</a>
+<a href="#" id="CTP-Utilities_menu" class="pure-menu-link">CTP-Utilities</a>
 <ul class="pure-menu-children">
-<li id="e1988c7b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/iworkslineitemimports/" class="pure-menu-link">(Chart) IWorks Line Items</a></li>
-<li id="13ed5fa7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/iworkslineitemimportswc/" class="pure-menu-link">(Chart) IWorks Word Cloud</a></li>
-<li id="fb35fd2b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/imports/" class="pure-menu-link">(Chart) Imports Partner Platform</a></li>
-<li id="c474197e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/extdatanire/" class="pure-menu-link">Import Charity Commission N. Ireland</a></li>
+<li id="861013b7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/netopsmessage/" class="pure-menu-link">Broadcast a NetOps Message</a></li>
+<li id="a0e0556e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/epochunixtimeconv/" class="pure-menu-link">Epoch Unix Time</a></li>
+<li id="b0898ea7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/mailinator/" class="pure-menu-link">Mailinator Email Address</a></li>
+<li id="0287f1f7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottimage/" class="pure-menu-link">OTT Steganography Generator</a></li>
+<li id="8a8b97f2" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/qrcode/" class="pure-menu-link">QR Code Generator</a></li>
+<li id="1482f990" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/steg/" class="pure-menu-link">Steganography Generator</a></li>
+<li id="bdc79615" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/transcode/" class="pure-menu-link">Transcode Service</a></li>
+<li id="acb20c91" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/translatetext/" class="pure-menu-link">Translate Text to an English Representation</a></li>
+<li id="d91a6cd7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cappvmeeting/" class="pure-menu-link">Video Meeting</a></li>
+<li id="bf7864bb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/whoops/" class="pure-menu-link">Whoops!</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="NGOSource_menu" class="pure-menu-link">NGOSource</a>
+<a href="#" id="Data-Ops_menu" class="pure-menu-link">Data-Ops</a>
 <ul class="pure-menu-children">
-<li id="c3ba24e4" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/edrcountprojectionbycountry/" class="pure-menu-link">(Chart) EDR Count Global View</a></li>
-<li id="21f4e39d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosfilemigration/" class="pure-menu-link">NGOSource File Migration</a></li>
-<li id="47d4428b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosfilemigrationstatus/" class="pure-menu-link">NGOSource File Migration Job Status</a></li>
-<li id="3b4082ff" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosgmlist/" class="pure-menu-link">NGOSource GM List</a></li>
-<li id="e481fb9e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngolu/" class="pure-menu-link">NGOSource LookUp</a></li>
+<li id="ad3facbf" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constraints/" class="pure-menu-link">Constraint Evaluation</a></li>
+<li id="10e715d7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constraintfile/" class="pure-menu-link">Constraint File Preview</a></li>
+<li id="44aa0a32" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constraintslist/" class="pure-menu-link">Constraints File Listing</a></li>
+<li id="a65364bd" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ccmslist/" class="pure-menu-link">Content Mgmt. Services (CCMS) Lister</a></li>
+<li id="67cbb910" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ccmsupload/" class="pure-menu-link">Content Mgmt. Services (CCMS) Upload</a></li>
+<li id="c0c5aa0f" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/dataarchiveinbox/" class="pure-menu-link">Data Archive Inbox</a></li>
+<li id="19ae114d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/inbox/" class="pure-menu-link">Domain Inbox</a></li>
+<li id="8eec68f4" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/constrainteditorapp/" class="pure-menu-link">Editor for Constraints</a></li>
+<li id="4774423b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/emailtemplateeditorapp/" class="pure-menu-link">Editor for Email Templates</a></li>
+<li id="2cf3fe88" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/redashsqleditorapp/" class="pure-menu-link">Editor for Redash SQL</a></li>
+<li id="eb0049a1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/emailtemplatelist/" class="pure-menu-link">Email Template File Listing</a></li>
+<li id="d910736e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/extdatanire/" class="pure-menu-link">Import Charity Commission N. Ireland</a></li>
+<li id="3c7f07a5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/imports/" class="pure-menu-link">Imports Partner Platform</a></li>
+<li id="874f615a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/refreshobject/" class="pure-menu-link">Object Refresh</a></li>
+<li id="b95885a1" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/objectrevisions/" class="pure-menu-link">Object Revisions List</a></li>
+<li id="205b3689" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/objectrevisionsviewer/" class="pure-menu-link">Object Revisions List Viewer</a></li>
+<li id="4cc0f97b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/redashquerylist/" class="pure-menu-link">Redash Query List</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Netsuite_menu" class="pure-menu-link">Netsuite</a>
+<a href="#" id="Fin-Ops_menu" class="pure-menu-link">Fin-Ops</a>
 <ul class="pure-menu-children">
-<li id="bf621a86" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nsprocessdata/" class="pure-menu-link">Netsuite Data</a></li>
-<li id="d9e2ac5f" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nsfilelist/" class="pure-menu-link">Netsuite File List</a></li>
+<li id="b7151597" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/btrequestcount/" class="pure-menu-link">Braintree Payment Gateway Daily Request Count</a></li>
+<li id="aeab605a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/bterrorlogs/" class="pure-menu-link">Braintree Payment Gateway Error Logs</a></li>
+<li id="3989f449" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/btloglookup/" class="pure-menu-link">Braintree Payment Gateway Log Lookup</a></li>
+<li id="84e8cda9" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/iworkslineitemimports/" class="pure-menu-link">IWorks Line Items</a></li>
+<li id="769d1e75" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/iworkslineitemimportswc/" class="pure-menu-link">IWorks Word Cloud</a></li>
+<li id="71da9090" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nsprocessdata/" class="pure-menu-link">Netsuite Data</a></li>
+<li id="2a92cd4a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nsfilelist/" class="pure-menu-link">Netsuite File List</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="OTT_menu" class="pure-menu-link">OTT</a>
+<a href="#" id="NGOS-Ops_menu" class="pure-menu-link">NGOS-Ops</a>
 <ul class="pure-menu-children">
-<li id="eee2aca0" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottauth/" class="pure-menu-link">OTT Authentication</a></li>
-<li id="39a5704e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottimage/" class="pure-menu-link">OTT Image Steganography Generator</a></li>
-<li id="ba274feb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottredeem/" class="pure-menu-link">OTT Redeem</a></li>
-<li id="9e5036a5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottrequest/" class="pure-menu-link">OTT Request</a></li>
-<li id="152c426b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottuserrequest/" class="pure-menu-link">OTT User Request</a></li>
-<li id="c17b5b99" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottbyuser/" class="pure-menu-link">OTT User Requests</a></li>
-<li id="31ca1e58" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ottuserauth/" class="pure-menu-link">OTT Username Authentication</a></li>
+<li id="b64aee65" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosconsbbimport/" class="pure-menu-link">Consolidated DB Import</a></li>
+<li id="de9beafd" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/edrcountprojectionbycountry/" class="pure-menu-link">EDR Count Global View</a></li>
+<li id="4c08563b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosesbmessage/" class="pure-menu-link">ESB Messages</a></li>
+<li id="3098c42c" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosfilemigration/" class="pure-menu-link">File Migration</a></li>
+<li id="7e16b864" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosfilemigrationstatus/" class="pure-menu-link">File Migration Job Status</a></li>
+<li id="fca5586b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosgmlist/" class="pure-menu-link">Grantmaker List</a></li>
+<li id="1ff142a0" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngolu/" class="pure-menu-link">LookUp</a></li>
+<li id="9a17bda7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ngosedrrefresh/" class="pure-menu-link">Refresh EDR</a></li>
 </ul></li>
 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Query_menu" class="pure-menu-link">Query</a>
+<a href="#" id="VS-Ops_menu" class="pure-menu-link">VS-Ops</a>
 <ul class="pure-menu-children">
-<li id="34100e83" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orgcountprojectionbycountry/" class="pure-menu-link">(Chart) Org Count Global View</a></li>
-<li id="0d269c2d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orgcountbycountry/" class="pure-menu-link">(Chart) Org Count by Country</a></li>
-<li id="02de0935" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orgcountbychange/" class="pure-menu-link">(Chart) Org Data Updates by Country</a></li>
-<li id="ce24ff76" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbycountry/" class="pure-menu-link">(Chart) VS Transactions by Country</a></li>
-<li id="9160c389" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbydate/" class="pure-menu-link">(Chart) VS Transactions by Date</a></li>
-<li id="d176beeb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbymapping/" class="pure-menu-link">(Chart) VS Transactions by VS Mapping</a></li>
-<li id="979fbbdb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cdfhydra/" class="pure-menu-link">CDF Hydra Multi-Query</a></li>
-<li id="54edc467" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cdforgquery/" class="pure-menu-link">CDF Organization Query</a></li>
-<li id="733d4c5a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/findentities/" class="pure-menu-link">Find Entities in Text</a></li>
-<li id="f761c743" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/findkeyphrases/" class="pure-menu-link">Find Key Phrases in Text</a></li>
-<li id="0cce69b8" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/irsbmf/" class="pure-menu-link">IRS BMF Lookup</a></li>
-<li id="a4119eea" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/luorgobjects/" class="pure-menu-link">Organization Lookup and Object Viewer</a></li>
-<li id="07d1845f" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tradegov/" class="pure-menu-link">Trade.gov Watch List LookUp</a></li>
-</ul></li>
-<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="System_menu" class="pure-menu-link">System</a>
-<ul class="pure-menu-children">
-<li id="2c5d6982" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytimewtfilterroutes/" class="pure-menu-link">(Chart) Elucidate API by Route, Filtered</a></li>
-<li id="59a88867" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytime/" class="pure-menu-link">(Chart) Elucidate API by Time</a></li>
-<li id="9e292e56" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytimewtfilter/" class="pure-menu-link">(Chart) Elucidate API by Time, Filtered</a></li>
-<li id="0cbfa86a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/elucidatebytimewtfiltercounted/" class="pure-menu-link">(Chart) Elucidate API by User, Filtered</a></li>
-<li id="4aefdf57" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodes/" class="pure-menu-link">(Chart) Nodes</a></li>
-<li id="d67fbdce" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/bterrorlogs/" class="pure-menu-link">Braintree Payment Gateway Error Logs</a></li>
-<li id="415d29dd" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/btloglookup/" class="pure-menu-link">Braintree Payment Gateway Log Lookup</a></li>
-<li id="b194629c" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/capplist/" class="pure-menu-link">CApp Names and ID Grid/Sheet</a></li>
-<li id="35704287" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/dns/" class="pure-menu-link">DNS Entry Mapping</a></li>
-<li id="eecd519d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/fileslist/" class="pure-menu-link">List of Files</a></li>
-<li id="ee9bfd2a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/logs/" class="pure-menu-link">Local Log Statements</a></li>
-<li id="8b887c15" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/workers/" class="pure-menu-link">Node - Active Workers</a></li>
-<li id="a0904eb5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cqueues/" class="pure-menu-link">Node - CQueues</a></li>
-<li id="a40c51ad" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodealtconf/" class="pure-menu-link">Node Alt Conf</a></li>
-<li id="b96a897b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodelocks/" class="pure-menu-link">Node Lock Files</a></li>
-<li id="baf3a2e9" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nodestats/" class="pure-menu-link">Node Memory Useage</a></li>
-<li id="7c08423b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ports/" class="pure-menu-link">Ports In-Use Mapping</a></li>
-<li id="1d46f914" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/queuesgraph/" class="pure-menu-link">Queues Graph</a></li>
-<li id="bc0e68f4" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/s3/" class="pure-menu-link">S3 Bucket Listing</a></li>
-<li id="787b6593" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/sqs/" class="pure-menu-link">SQS Queues Listing</a></li>
-<li id="39de28bb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/schemaforms/" class="pure-menu-link">Schema Forms</a></li>
-<li id="39e6c8df" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/workerlist/" class="pure-menu-link">Workers List</a></li>
-</ul></li>
-<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Utility_menu" class="pure-menu-link">Utility</a>
-<ul class="pure-menu-children">
-<li id="82bfa6b9" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/netopsmessage/" class="pure-menu-link">Broadcast a NetOps Message</a></li>
-<li id="872472ed" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/changelogapp/" class="pure-menu-link">CTP Change Log</a></li>
-<li id="6a7ec538" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ctpdocumentationapp/" class="pure-menu-link">CTP Documentation</a></li>
-<li id="773eb739" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/redashsqleditorapp/" class="pure-menu-link">Editor for Redash SQL</a></li>
-<li id="7f95e18f" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/epochunixtimeconv/" class="pure-menu-link">Epoch Unix Time</a></li>
-<li id="92409224" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/mailinator/" class="pure-menu-link">Mailinator Email Address</a></li>
-<li id="01e2fdbf" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/qrcode/" class="pure-menu-link">QR Code Generator</a></li>
-<li id="78fb4f60" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/redashquerylist/" class="pure-menu-link">Redash Query List</a></li>
-<li id="3063dfe7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/certexpiredate/" class="pure-menu-link">SSL/TLS Certificate Expiration</a></li>
-<li id="0b91db6d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/certviewer/" class="pure-menu-link">SSL/TLS Certificate Viewer</a></li>
-<li id="df88c326" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/steg/" class="pure-menu-link">Steganography Generator</a></li>
-<li id="36aefc58" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/transcode/" class="pure-menu-link">Transcode Service</a></li>
-<li id="b14c03a5" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/translatetext/" class="pure-menu-link">Translate Text to an English Representation</a></li>
-<li id="5815898a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/cappvmeeting/" class="pure-menu-link">Video Meeting</a></li>
-<li id="f32513e8" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/whoops/" class="pure-menu-link">Whoops!</a></li>
-</ul></li>
-<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-<a href="#" id="Validation_menu" class="pure-menu-link">Validation</a>
-<ul class="pure-menu-children">
-<li id="f47e12cf" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/domainvalidate/" class="pure-menu-link">Check Domain Validity</a></li>
-<li id="7810c5da" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/websitevalidate/" class="pure-menu-link">Check Website Validity</a></li>
-<li id="6c0e5c1b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ticketeditorapp/" class="pure-menu-link">Editor for Ticket Objects</a></li>
-<li id="d098193f" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/refreshobject/" class="pure-menu-link">Object Refresh</a></li>
-<li id="eaa8fd1d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/objectrevisions/" class="pure-menu-link">Object Revisions List</a></li>
-<li id="b1736ce0" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/objectrevisionsviewer/" class="pure-menu-link">Object Revisions List Viewer</a></li>
-<li id="c21f861d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsviewobjects/" class="pure-menu-link">Object Viewer Validation Request Focus</a></li>
-<li id="fe15ff70" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orghandleregeneration/" class="pure-menu-link">Regenerate Org Handle</a></li>
-<li id="cef3cc57" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tokenchange/" class="pure-menu-link">Token Change</a></li>
-<li id="2653228e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tokencheck/" class="pure-menu-link">Token Check</a></li>
-<li id="727a919d" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsartifactlist/" class="pure-menu-link">Validation Artifacts List</a></li>
-<li id="603eb892" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valmoveexisting/" class="pure-menu-link">Validation Move - Existing</a></li>
-<li id="2b7b16ef" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valmovenew/" class="pure-menu-link">Validation Move - New</a></li>
-<li id="36f2483a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valreinitate/" class="pure-menu-link">Validation Re-Initiate Validation</a></li>
-<li id="2a265d6b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsbulkclose/" class="pure-menu-link">Validation Request Bulk Close</a></li>
-<li id="d10621c7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsbulkclosestatus/" class="pure-menu-link">Validation Request Bulk Close Job Status</a></li>
-<li id="56f638a4" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valrequest/" class="pure-menu-link">Validation Request Initiation</a></li>
-<li id="85a63c87" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestlist/" class="pure-menu-link">Validation Request List</a></li>
-<li id="70a1c80b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestcontextlist/" class="pure-menu-link">Validation Request List Wt. Context</a></li>
-<li id="c27dfafe" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestobject/" class="pure-menu-link">Validation Request Object</a></li>
+<li id="07bf3019" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/domainvalidate/" class="pure-menu-link">Check Domain Validity</a></li>
+<li id="17537319" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/websitevalidate/" class="pure-menu-link">Check Website Validity</a></li>
+<li id="a2ad6d79" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ticketeditorapp/" class="pure-menu-link">Editor for Ticket Objects</a></li>
+<li id="2dd57138" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsviewobjects/" class="pure-menu-link">Object Viewer Validation Request Focus</a></li>
+<li id="0dd4dda6" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orghandleregeneration/" class="pure-menu-link">Regenerate Org Handle</a></li>
+<li id="c0a4dfdf" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tokenchange/" class="pure-menu-link">Token Change</a></li>
+<li id="aac89886" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tokencheck/" class="pure-menu-link">Token Check</a></li>
+<li id="bcd9a0ff" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsartifactlist/" class="pure-menu-link">Validation Artifacts List</a></li>
+<li id="c34c1bd7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valmoveexisting/" class="pure-menu-link">Validation Move - Existing</a></li>
+<li id="d8ba3439" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valmovenew/" class="pure-menu-link">Validation Move - New</a></li>
+<li id="638574e0" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valreinitate/" class="pure-menu-link">Validation Re-Initiate Validation</a></li>
+<li id="6756edd9" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsbulkclose/" class="pure-menu-link">Validation Request Bulk Close</a></li>
+<li id="1a2c7955" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsbulkclosestatus/" class="pure-menu-link">Validation Request Bulk Close Job Status</a></li>
+<li id="1b868816" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valrequest/" class="pure-menu-link">Validation Request Initiation</a></li>
+<li id="87a4ec3b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestlist/" class="pure-menu-link">Validation Request List</a></li>
+<li id="2419cc6e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestcontextlist/" class="pure-menu-link">Validation Request List Wt. Context</a></li>
+<li id="0cdecb9c" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestobject/" class="pure-menu-link">Validation Request Object</a></li>
+<li id="a83b0abb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbycountry/" class="pure-menu-link">Validation Transactions by Country</a></li>
+<li id="c7ba27aa" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbydate/" class="pure-menu-link">Validation Transactions by Date</a></li>
+<li id="acc2a393" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbymapping/" class="pure-menu-link">Validation Transactions by VS Mapping</a></li>
 </ul></li>
 </ul></div>
 
@@ -272,29 +259,27 @@
 
 <div class="div-capp-small">
 &nbsp;&nbsp;&nbsp;<span id="ctp_user">a-su3@ctpdev.org</span>
-&nbsp;<strong>→</strong>
-&nbsp;<strong>(Chart) Org Count by Country</strong>
-&nbsp;<em>Version: 0.82</em>
-&nbsp;<strong>→</strong>
-&nbsp;<em>Count of Organizations by Country.</em>
-&nbsp;<strong>→</strong>
-&nbsp; <b><em style="color:blue;">prod/capp-su2</em></b> </div>
+&nbsp;&gt;
+&nbsp; <b><em style="color:#85c1fa;">prod/capp-su2</em></b> &nbsp;&gt;&nbsp;<em>Basic information on each active CTP node.</em>
+&nbsp;&gt;
+&nbsp;<em>0.94.505</em>
+</div>
 
 <div class="div-capp-xsmall"> 
-	<form id="app_auth_form" class="pure-form">
-		<fieldset>
-			<div class="div-capp-xsmall">
-			<input id="username" type="email" autocomplete="username" placeholder="Admin user ..." />
-			<input id="password" type="password" autocomplete="current-password" placeholder="Admin password ..." />
-			<button type="button" id="auth_button" onclick="authenticateFunction()" class="pure-button button-small">Admin Log In</button>
-			</div>
-		</fieldset>
-	</form>
-	</div>
-	
-	<div id="api_service_control" class="div-capp-xsmall"> 
-		<button type="button" id="api_service_button" onclick="apiService()" class="pure-button button-small">Access API/Service</button>
-	</div>
+    <form id="app_auth_form" class="pure-form">
+        <fieldset>
+            <div class="div-capp-xsmall">
+            <input id="username" type="email" autocomplete="username" placeholder="Admin user ..." />
+            <input id="password" type="password" autocomplete="current-password" placeholder="Admin password ..." />
+            <button type="button" id="auth_button" onclick="authenticateFunction()" class="pure-button button-small">Admin Log In</button>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+    
+    <div id="api_service_control" class="div-capp-xsmall"> 
+        <button type="button" id="api_service_button" onclick="apiService()" class="pure-button button-small">Access API/Service</button>
+    </div>
 
 <div class="spinner-container"><div id="spinner" class="wave hidden-element"></div></div>
 
@@ -304,28 +289,23 @@
 <!-- We need the parent div to child element (table) relationship for the API data updates to function. -->
 <div id="ctp_data_table_parent" class="div-capp hidden-element">
 
- 
-<table id="ctp_data_table" class="cell-border compact stripe hover" style="width:100%">
-	<thead>
-		<tr>
-			<th>Country</th>
-			<th>Org. Count</th>
-			<th>Log. of Total</th>
-			<th>Name</th>
-			<th>Capital City</th>
-			<th>ISO 2 Code</th>
-			<th>ISO 3 Code</th>
-			<th>Languages</th>
-			<th>IBAN Currency</th>
-			<th>IBAN Code</th>
-			<th>IBAN Num</th>
-			<th>Longitude</th>
-			<th>Latitude</th>
 
-		</tr>
-	</thead>		
-	<tbody>
-			</tbody>
+<table id="ctp_data_table" class="cell-border compact stripe hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>Uptime</th>
+            <th>Node</th>
+            <th>IP</th>
+            <th>Name</th>
+            <th>Version</th>
+            <th>Profile</th>
+            <th>Region</th>
+            <th>Started</th>
+            <th>Heartbeat</th>
+        </tr>
+    </thead>        
+    <tbody>
+            </tbody>
 </table>
 </div>
 
@@ -339,27 +319,19 @@
 <!-- START MARKDOWN TEXT -->  
 <h5 id="overview"><a href="#overview" id="overview">Overview:</a></h5>
 <blockquote>
-<p>This CApp displays the distribution of <em>Organizations</em> within the primary CTP datastore, by country, along with other <em>country specific metadata</em>. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup> <sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup> <sup id="fnref-4"><a class="footnote-ref" href="#fn-4">4</a></sup></p>
+<p>This CApp display active <em>CTP nodes</em> along with the number of days each node has been active. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup></p>
 </blockquote>
 <!-- END MARKDOWN TEXT -->
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn-1">
-<p>The count of organizations is displayed using the natural logarithm of the actual count.</p>
+<p>Just hover your pointer over a lollipop bar to display the <em>days up</em> metric.</p>
 <a href="#fnref-1" class="footnote-backref">&#8617;</a>
 </li>
 <li id="fn-2">
-<p>The actual count can easily be displayed by using the table filter and a country specific filter.</p>
-<a href="#fnref-2" class="footnote-backref">&#8617;</a>
-</li>
-<li id="fn-3">
-<p>Sorting the table will cause the graph to be redrawn based on the sorted data, which can yield a progressive graph rather and the intial <em>random looking</em> graph.</p>
-<a href="#fnref-3" class="footnote-backref">&#8617;</a>
-</li>
-<li id="fn-4">
 <p>Note that the graph can be viewed independent from the source table, and or exported in various image formats, using the controls available in the upper right corner of the graphic (the hamburger menu).</p>
-<a href="#fnref-4" class="footnote-backref">&#8617;</a>
+<a href="#fnref-2" class="footnote-backref">&#8617;</a>
 </li>
 </ol>
 </div>

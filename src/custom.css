@@ -4,9 +4,7 @@
     font-style: normal;
 }
 
-/* .ui-resizable-handle {
-    display: none !important;
-} */
+
 
 nav.navbar {
     font-family: Replica-Pro, sans-serif;
@@ -171,12 +169,17 @@ nav.navbar .navbar-corner>div .btn {
     margin-top: 20px;
 }
 
-.iframeTest{
-    pointer-events: none;
+.ui-resizable-handle {
+    /* display: none !important; */
+    position: absolute;
+    z-index: 3;
+}
+
+.moduleContainer{
+    /* pointer-events: none; */
     height: 665px;
     transform-origin: 27px 195px;
     margin-top: -195px;
     margin-left: -27px;
-    margin-right: 30px;
     width: 34vw;
 }
