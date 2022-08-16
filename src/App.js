@@ -30,7 +30,7 @@ function App() {
 
         grid.on('resizestop', (event, el) => {
             let node = el.gridstackNode;
-            document.getElementById('node').style.transform = `scale(${node.width / 3}, ${node.height / 3})`;
+            document.getElementById('nodesGraph').style.transform = `scale(${node.width / 3}, ${node.height / 3})`;
             toggleModuleInteractivity('initial');
         });
 
@@ -72,22 +72,23 @@ function App() {
     const [widgetState, toggleWidgetState] = useState(false);
 
 
-    const turnNodeOff = () => {
+    const deleteNode = () => {
         if (!canDelete) {
             return;
         }
-        toggleWidgetState(false);
+        // delete node
+
+        // delete node preview
         togglePreviewState(prev => ({ ...prev, preview: true, animation: true }));
     }
 
 
     const addWidget = () => {
 
-        // add widget to screen
-        // toggleWidgetState(true);
+        // add node to screen
         var items = [
             {content: 'my first widget'}, // will default to location (0,0) and 1x1
-            {width: 3, height: 3, content: '<iframe title="node" id="node" src="http://127.0.0.1:5501/src/test_screens/1.html" class="moduleContainer"></iframe>'},
+            {width: 3, height: 3, content: '<iframe title="nodesGraph" id="nodesGraph" src="http://127.0.0.1:5501/src/test_screens/1.html" class="moduleContainer"></iframe>'},
 
             
 
@@ -228,7 +229,7 @@ function App() {
             <section className="grid-container">
                 <div className="grid-stack">
                     {/* {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
-                        <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
+                        <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={deleteNode}>
                             <iframe
                                 title="node"
                                 scrolling="no"
