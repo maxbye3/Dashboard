@@ -17,13 +17,6 @@ function App() {
         document.getElementById("nodePreview").addEventListener("click", addWidget);
     });
 
-    const turnNodeOff = () => {
-        console.log('turn off');
-        toggleWidgetState(false);
-        togglePreviewState(prev => ({ ...prev, preview: true }))
-        togglePreviewState(prev => ({ ...prev, animation: true }))
-    }
-
 
 
 
@@ -50,6 +43,7 @@ function App() {
 
     const togglePanel = (addMode = false) => {
         togglePanelState(addMode);
+        toggleDeleteMode(false);
         toggleEditMode(!editMode);
     }
 
@@ -59,6 +53,17 @@ function App() {
     });
 
     const [widgetState, toggleWidgetState] = useState(false);
+
+
+    const turnNodeOff = () => {
+        if(!canDelete){
+            return;
+        }
+        toggleWidgetState(false);
+        togglePreviewState(prev => ({ ...prev, preview: true }))
+        togglePreviewState(prev => ({ ...prev, animation: true }))
+    }
+
 
     const addWidget = () => {
 
@@ -204,7 +209,7 @@ function App() {
             </div> */}
             <section class="grid-container">
                 <div className="grid-stack">
-                    {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="6">
+                    {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
                         <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
                             <iframe
                                 title="node"
@@ -212,7 +217,7 @@ function App() {
                                 src="http://127.0.0.1:5501/src/test_screens/1.html"
                                 style={{
                                     pointerEvents: 'none',
-                                    height: '670px',
+                                    height: '665px',
                                     // transformOrigin: 'top left',
                                     // transform: 'scale(2,2)',
                                     marginTop: '-195px',
