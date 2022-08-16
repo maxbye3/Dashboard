@@ -4,9 +4,9 @@
     font-style: normal;
 }
 
-.ui-resizable-handle {
+/* .ui-resizable-handle {
     display: none !important;
-}
+} */
 
 nav.navbar {
     font-family: Replica-Pro, sans-serif;
@@ -161,8 +161,8 @@ nav.navbar .navbar-corner>div .btn {
 }
 
 .panels{
-height: 200px;
-overflow: hidden;
+    height: 200px;
+    overflow: hidden;
 }
 
 .sidePanel .panels{

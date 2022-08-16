@@ -6,6 +6,7 @@ import './custom.css';
 import { Animated } from "react-animated-css";
 
 import "./App.css";
+import jquery from "gridstack/dist/jq/jquery";
 
 function App() {
     // https://authex-0.tsgctp.org:9005/services/capps/access
@@ -15,9 +16,26 @@ function App() {
 
     useEffect(() => {
         document.getElementById("nodePreview").addEventListener("click", addWidget);
+        var grid = GridStack.init();
+        grid.on('resizestart', (event, el) => {
+            let node = el.gridstackNode;
+            console.log(node)
+        });
+        
+        grid.on('resizestop', (event, el) => {
+            let node = el.gridstackNode;
+            console.log(node)
+        });
+        
     });
-
-
+    
+    // console.log('HELLO', );
+    // document.getElementsByClassName("grid-stack-item").addEventListener("resizestop", () => {
+    //     console.log(1);
+    // });
+    jquery('.grid-stack').on('gsresizestop', () => {
+        console.log(1);
+    })
 
 
     // const iframeRef = useRef(null)
@@ -207,8 +225,28 @@ function App() {
             {/* <div id="loginPage" style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '10', background: 'white' }}>
                 <IframeResizer onMessage={onMessage} style={{ height: '100vh', width: '100vw' }} src="http://127.0.0.1:5500/capps.html"></IframeResizer>
             </div> */}
-            <section class="grid-container">
+            <section className="grid-container">
                 <div className="grid-stack">
+                    <div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
+                        <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
+                            <iframe
+                                title="node"
+                                scrolling="no"
+                                src="http://127.0.0.1:5501/src/test_screens/1.html"
+                                style={{
+                                    pointerEvents: 'none',
+                                    height: '665px',
+                                    // transformOrigin: 'top left',
+                                    // transform: 'scale(2,2)',
+                                    marginTop: '-195px',
+                                    marginLeft: '-27px',
+                                    marginRight: '30px',
+                                    width: '34vw'
+                                }}
+                            >
+                            </iframe>
+                        </div>
+                    </div>
                     {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
                         <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
                             <iframe
