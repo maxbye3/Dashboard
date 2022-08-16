@@ -11,13 +11,20 @@ function App() {
     // a-su3@ctpdev.org
     // a-su3@$435Brannan/3000
 
+    // const iframeRef = useRef(null)
+    // const [messageData, setMessageData] = useState()
+
+    // const onMessage = data => {
+    //     document.getElementById('loginPage').style.display = 'none';
+    // }
+
 
     let grid;
     useEffect(() => {
         grid = GridStack.init();
         document.getElementById("nodePreview").addEventListener("click", addWidget);
 
-        const toggleModuleInteractivity = (state) => {
+        const toggleNodesInteractivity = (state) => {
             const modules = document.getElementsByClassName('moduleContainer');
             for (var i = 0; i < modules.length; i++) {
                 modules[i].style.pointerEvents = state;
@@ -25,29 +32,16 @@ function App() {
         }
 
         grid.on('resizestart', () => {
-            toggleModuleInteractivity('none');
+            toggleNodesInteractivity('none');
         });
 
         grid.on('resizestop', (event, el) => {
             let node = el.gridstackNode;
-            document.getElementById('nodesGraph').style.transform = `scale(${node.width / 3}, ${node.height / 3})`;
-            toggleModuleInteractivity('initial');
+            document.getElementById(node.id).style.transform = `scale(${node.width / 3}, ${node.height / 3})`;
+            toggleNodesInteractivity('initial');
         });
 
     });
-
-
-    // const iframeRef = useRef(null)
-    // const [messageData, setMessageData] = useState()
-
-    // const onResized = data => {
-    //     console.log('ONRESIZED', data);
-    //     setMessageData(data);
-    // }
-
-    // const onMessage = data => {
-    //     document.getElementById('loginPage').style.display = 'none';
-    // }
 
     const [showPanel, togglePanelState] = useState(false);
     const [editMode, toggleEditMode] = useState(false);
@@ -85,7 +79,7 @@ function App() {
         // add node to screen
         var items = [
             {content: 'my first node'}, // will default to location (0,0) and 1x1
-            {width: 3, height: 3, content: '<iframe title="nodesGraph" id="nodesGraph" src="http://127.0.0.1:5501/src/test_screens/1.html" class="moduleContainer"></iframe>'},
+            {id: 'nodesGraph', width: 3, height: 3, content: '<iframe title="nodesGraph" id="nodesGraph" src="http://127.0.0.1:5501/src/test_screens/1.html" class="moduleContainer"></iframe>'},
 
             
 
