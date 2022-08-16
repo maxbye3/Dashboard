@@ -227,22 +227,13 @@ function App() {
             </div> */}
             <section className="grid-container">
                 <div className="grid-stack">
-                    <div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
+                    <div className="grid-stack-item" data-gs-width="6" data-gs-height="6">
                         <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
                             <iframe
                                 title="node"
                                 scrolling="no"
                                 src="http://127.0.0.1:5501/src/test_screens/1.html"
-                                style={{
-                                    pointerEvents: 'none',
-                                    height: '665px',
-                                    // transformOrigin: 'top left',
-                                    // transform: 'scale(2,2)',
-                                    marginTop: '-195px',
-                                    marginLeft: '-27px',
-                                    marginRight: '30px',
-                                    width: '34vw'
-                                }}
+                                className="iframeTest"
                             >
                             </iframe>
                         </div>
@@ -256,8 +247,8 @@ function App() {
                                 style={{
                                     pointerEvents: 'none',
                                     height: '665px',
-                                    // transformOrigin: 'top left',
-                                    // transform: 'scale(2,2)',
+                                    transformOrigin: '-195px -27px',
+                                    transform: 'scale(2,2)',
                                     marginTop: '-195px',
                                     marginLeft: '-27px',
                                     marginRight: '30px',
