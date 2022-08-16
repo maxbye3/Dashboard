@@ -12,12 +12,9 @@ function App() {
     // a-su3@$435Brannan/3000
 
 
-    const [scaleX, setScaleX] = useState(1);
-    const [scaleY, setScaleY] = useState(1);
-
-
+    let grid;
     useEffect(() => {
-        const grid = GridStack.init();
+        grid = GridStack.init();
         document.getElementById("nodePreview").addEventListener("click", addWidget);
 
         const toggleModuleInteractivity = (state) => {
@@ -33,8 +30,7 @@ function App() {
 
         grid.on('resizestop', (event, el) => {
             let node = el.gridstackNode;
-            setScaleX(node.width / 3);
-            setScaleY(node.height / 3);
+            document.getElementById('node').style.transform = `scale(${node.width / 3}, ${node.height / 3})`;
             toggleModuleInteractivity('initial');
         });
 
@@ -88,8 +84,16 @@ function App() {
     const addWidget = () => {
 
         // add widget to screen
-        toggleWidgetState(true);
-        GridStack.init();
+        // toggleWidgetState(true);
+        var items = [
+            {content: 'my first widget'}, // will default to location (0,0) and 1x1
+            {width: 3, height: 3, content: '<iframe title="node" id="node" src="http://127.0.0.1:5501/src/test_screens/1.html" class="moduleContainer"></iframe>'},
+
+            
+
+        ];
+        // var grid = GridStack.init();
+        grid.load(items);
 
         // remove preview
         togglePreviewState(prev => ({ ...prev, animation: false }))
@@ -223,21 +227,7 @@ function App() {
             </div> */}
             <section className="grid-container">
                 <div className="grid-stack">
-                    <div className="grid-stack-item" data-gs-width="3" data-gs-height="3">
-                        <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
-                            <iframe
-                                title="node"
-                                scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/1.html"
-                                className="moduleContainer"
-                                style={{
-                                    transform: `scale(${scaleX}, ${scaleY})`
-                                }}
-                            >
-                            </iframe>
-                        </div>
-                    </div>
-                    {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
+                    {/* {widgetState && (<div className="grid-stack-item" data-gs-width="4" data-gs-height="5">
                         <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
                             <iframe
                                 title="node"
@@ -256,7 +246,7 @@ function App() {
                             >
                             </iframe>
                         </div>
-                    </div>)}
+                    </div>)} */}
                 </div>
             </section>
         </div>
