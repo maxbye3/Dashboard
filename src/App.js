@@ -33,8 +33,8 @@ function App() {
 
         grid.on('resizestop', (event, el) => {
             let node = el.gridstackNode;
-            setScaleX(node.height / 3);
-            setScaleY(node.width / 3);
+            setScaleX(node.width / 3);
+            setScaleY(node.height / 3);
             toggleModuleInteractivity('initial');
         });
 
@@ -81,8 +81,7 @@ function App() {
             return;
         }
         toggleWidgetState(false);
-        togglePreviewState(prev => ({ ...prev, preview: true }))
-        togglePreviewState(prev => ({ ...prev, animation: true }))
+        togglePreviewState(prev => ({ ...prev, preview: true, animation: true }));
     }
 
 
@@ -232,7 +231,7 @@ function App() {
                                 src="http://127.0.0.1:5501/src/test_screens/1.html"
                                 className="moduleContainer"
                                 style={{
-                                    transform: `scale(${scaleY}, ${scaleX})`
+                                    transform: `scale(${scaleX}, ${scaleY})`
                                 }}
                             >
                             </iframe>
