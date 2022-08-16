@@ -25,9 +25,9 @@ function App() {
         document.getElementById("nodePreview").addEventListener("click", addWidget);
 
         const toggleNodesInteractivity = (state) => {
-            const modules = document.getElementsByClassName('moduleContainer');
-            for (var i = 0; i < modules.length; i++) {
-                modules[i].style.pointerEvents = state;
+            const nodes = document.getElementsByClassName('nodesContainer');
+            for (var i = 0; i < nodes.length; i++) {
+                nodes[i].style.pointerEvents = state;
             }
         }
 
@@ -79,7 +79,7 @@ function App() {
         // add node to screen
         var items = [
             {content: 'my first node'}, // will default to location (0,0) and 1x1
-            {id: 'nodesGraph', width: 3, height: 3, content: '<iframe title="nodesGraph" id="nodesGraph" src="http://127.0.0.1:5501/src/test_screens/1.html" class="moduleContainer"></iframe>'},
+            {id: 'nodesGraph', width: 3, height: 3, content: '<iframe title="nodesGraph" id="nodesGraph" src="http://127.0.0.1:5501/src/test_screens/1.html" class="nodesContainer"></iframe>'},
 
             
 

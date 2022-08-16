@@ -175,8 +175,7 @@ nav.navbar .navbar-corner>div .btn {
     z-index: 3;
 }
 
-.moduleContainer{
-    /* pointer-events: none; */
+.nodesContainer{
     height: 665px;
     transform-origin: 27px 195px;
     margin-top: -195px;
