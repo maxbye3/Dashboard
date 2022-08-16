@@ -175,7 +175,6 @@ nav.navbar .navbar-corner>div .btn {
     pointer-events: none;
     height: 665px;
     transform-origin: 27px 195px;
-    transform: scale(2,2);
     margin-top: -195px;
     margin-left: -27px;
     margin-right: 30px;

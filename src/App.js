@@ -12,31 +12,27 @@ function App() {
     // https://authex-0.tsgctp.org:9005/services/capps/access
     // a-su3@ctpdev.org
     // a-su3@$435Brannan/3000
-    let toDelete = false;
+
+
+    const [scaleX, setScaleX] = useState(1);
+    const [scaleY, setScaleY] = useState(1);
+
 
     useEffect(() => {
+        const grid = GridStack.init();
+        // let zoomDiff = {};
+        let scale = {x: 1, y:1};
         document.getElementById("nodePreview").addEventListener("click", addWidget);
-        var grid = GridStack.init();
-        grid.on('resizestart', (event, el) => {
-            let node = el.gridstackNode;
-            console.log(node)
-        });
         
         grid.on('resizestop', (event, el) => {
             let node = el.gridstackNode;
-            console.log(node)
+             setScaleX(node.height/3);
+             setScaleY(node.width/3);
+            console.log(scaleX, scaleY);
         });
         
     });
     
-    // console.log('HELLO', );
-    // document.getElementsByClassName("grid-stack-item").addEventListener("resizestop", () => {
-    //     console.log(1);
-    // });
-    jquery('.grid-stack').on('gsresizestop', () => {
-        console.log(1);
-    })
-
 
     // const iframeRef = useRef(null)
     // const [messageData, setMessageData] = useState()
@@ -141,8 +137,6 @@ function App() {
                             border: 0,
                             pointerEvents: 'none',
                             height: '627px',
-                            transformOrigin: 'top left',
-                            transform: 'scale(.5,.5)',
                             marginTop: '-105px',
                         }}
                     >
@@ -160,8 +154,6 @@ function App() {
                             border: 0,
                             pointerEvents: 'none',
                             height: '627px',
-                            transformOrigin: 'top left',
-                            transform: 'scale(.5,.5)',
                             marginTop: '-105px',
                         }}
                     >
@@ -179,8 +171,6 @@ function App() {
                             border: 0,
                             pointerEvents: 'none',
                             height: '627px',
-                            transformOrigin: 'top left',
-                            transform: 'scale(.5,.5)',
                             marginTop: '-105px',
                         }}
                     >
@@ -227,13 +217,16 @@ function App() {
             </div> */}
             <section className="grid-container">
                 <div className="grid-stack">
-                    <div className="grid-stack-item" data-gs-width="6" data-gs-height="6">
+                    <div className="grid-stack-item" data-gs-width="3" data-gs-height="3">
                         <div className={`grid-stack-item-content ${canDelete ? 'highlight-grid' : ''}`} onClick={turnNodeOff}>
                             <iframe
                                 title="node"
                                 scrolling="no"
                                 src="http://127.0.0.1:5501/src/test_screens/1.html"
                                 className="iframeTest"
+                                style={{
+                                    transform: `scale(${scaleY}, ${scaleX})`
+                                }}
                             >
                             </iframe>
                         </div>
