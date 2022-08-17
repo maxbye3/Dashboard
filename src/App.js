@@ -22,7 +22,7 @@ function App() {
     let grid;
     useEffect(() => {
         grid = GridStack.init();
-        document.getElementById("nodePreview").addEventListener("click", addWidget);
+        document.getElementById("nodePreview").addEventListener("click", addNode);
 
         const toggleNodesInteractivity = (state) => {
             const nodes = document.getElementsByClassName('nodesContainer');
@@ -73,16 +73,12 @@ function App() {
         togglePreviewState(prev => ({ ...prev, preview: true, animation: true }));
     }
 
-
-    const addWidget = () => {
+    const addNode = () => {
 
         // add node to screen
         var items = [
-            {content: 'my first node'}, // will default to location (0,0) and 1x1
-            {id: 'nodesGraph', width: 3, height: 3, content: '<iframe title="nodesGraph" id="nodesGraph" src="http://127.0.0.1:5501/src/test_screens/1.html" class="nodesContainer"></iframe>'},
-
-            
-
+            // {content: 'my first node'}, // will default to location (0,0) and 1x1
+            {id: 'nodesGraph', width: 3, height: 3, content: '<iframe class="nodesContainer" title="nodesGraph" id="nodesGraph" onclick="() => { console.log(1) }" src="http://127.0.0.1:5501/src/test_screens/1.html"></iframe>'},
         ];
         // var grid = GridStack.init();
         grid.load(items);
@@ -111,7 +107,7 @@ function App() {
                 >
                     <div id="nodePreview">
                         <iframe
-                            onClick={addWidget}
+                            onClick={addNode}
                             title="node"
                             scrolling="no"
                             src="http://127.0.0.1:5501/src/test_screens/1.html"
