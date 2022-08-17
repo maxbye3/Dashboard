@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import IframeResizer from 'iframe-resizer-react'
 import { Nodes } from './components/Nodes.js'
+import { NavBar } from './components/NavBar.js'
 import { Animated } from "react-animated-css";
 import "./css/nav.css";
 import './css/grid.css';
@@ -20,6 +21,10 @@ function App() {
 
 
     useEffect(() => {});
+
+    const setState = (state) => {
+        setDashboardState(state);
+    }
 
     const [dashboardState, setDashboardState] = useState('none');
 
@@ -143,39 +148,7 @@ function App() {
             </Animated>
             {/* side panel */}
 
-            {/* HEADER */}
-            <nav className="navbar navbar-fixed-top nav-one DPOFix margin-live">
-                <div className="navbar-header">
-                    <a className="navbar-brand" href="/"></a>
-                    <div className="dashboardContainer">
-                        <p >Dashboard</p>
-                    </div>
-                </div>
-
-                <div>
-                    <div id="signIn" className="navbar-corner">
-                        <div className="flex-buttons">
-                            {dashboardState !== 'none' && (<div className="btn btn-black-white" id="GoBack" onClick={() => {dashboardMode('none','all')}}>
-                                Done
-                            </div>)}
-                            {dashboardState === 'none' && (
-                                <>
-                                    <div className="btn btn-black-white" id="Add" onClick={() => {dashboardMode('add nodes','all')}}>
-                                        Add Nodes
-                                    </div>
-                                    <div className="btn btn-black-white-inverse" id="Delete" onClick={()=>{dashboardMode('remove nodes','none')}}>
-                                        Move / Remove Nodes
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    </div>
-                    <div id="joinIn" className="navbar-corner">
-
-                    </div>
-                </div>
-            </nav>
-            {/* header */}
+            <NavBar dashboardState={dashboardState} changeState={setState}></NavBar>
             <Nodes></Nodes>
         </div>
     );
