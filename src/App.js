@@ -60,6 +60,14 @@ function App() {
         togglePreviewState(prev => ({ ...prev, preview: true, animation: true }));
     }
 
+    const dashboardMode = (type, event) => {
+        setDashboardState(type);
+        const nodesGraph = document.getElementById('nodesGraph');
+        if(nodesGraph){
+            nodesGraph.style.pointerEvents = event;
+        }
+    }
+
     const addNode = () => {
 
         // add node to screen
@@ -187,15 +195,15 @@ function App() {
                 <div>
                     <div id="signIn" className="navbar-corner">
                         <div className="flex-buttons">
-                            {dashboardState !== 'none' && (<div className="btn btn-black-white" id="GoBack" onClick={() => { setDashboardState('none'); }}>
+                            {dashboardState !== 'none' && (<div className="btn btn-black-white" id="GoBack" onClick={() => {dashboardMode('none','all')}}>
                                 Done
                             </div>)}
                             {dashboardState === 'none' && (
                                 <>
-                                    <div className="btn btn-black-white" id="Add" onClick={() => { setDashboardState('add nodes') }}>
+                                    <div className="btn btn-black-white" id="Add" onClick={() => {dashboardMode('add nodes','all')}}>
                                         Add Nodes
                                     </div>
-                                    <div className="btn btn-black-white-inverse" id="Delete" onClick={() => { setDashboardState('remove nodes') }}>
+                                    <div className="btn btn-black-white-inverse" id="Delete" onClick={()=>{dashboardMode('remove nodes','none')}}>
                                         Move / Remove Nodes
                                     </div>
                                 </>
