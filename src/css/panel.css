@@ -1,0 +1,19 @@
+.sidePanel{
+    position: fixed;
+    z-index: 1;
+    top: 50px;
+    right: 0;
+    width: 200px;
+    height: 100vh;
+    display: block;
+    background-color: #004873;
+    overflow-y: scroll;
+}
+
+.sidePanel .panels{
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 25px;
+    margin-top: 20px;
+}

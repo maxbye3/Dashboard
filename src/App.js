@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import IframeResizer from 'iframe-resizer-react'
-import { GridStack } from 'gridstack';
-import 'gridstack/dist/gridstack.css';
-import './custom.css';
+import { Nodes } from './components/Nodes.js'
 import { Animated } from "react-animated-css";
-import "./App.css";
+import "./css/nav.css";
+import './css/grid.css';
+import "./css/panel.css";
 
 function App() {
     // https://authex-0.tsgctp.org:9005/services/capps/access
@@ -19,29 +19,7 @@ function App() {
     // }
 
 
-    let grid;
-    useEffect(() => {
-        grid = GridStack.init();
-        // document.getElementById("nodePreview").addEventListener("click", addNode);
-
-        const toggleNodesInteractivity = (state) => {
-            const nodes = document.getElementsByClassName('nodesContainer');
-            for (var i = 0; i < nodes.length; i++) {
-                nodes[i].style.pointerEvents = state;
-            }
-        }
-
-        grid.on('resizestart', () => {
-            toggleNodesInteractivity('none');
-        });
-
-        grid.on('resizestop', (event, el) => {
-            let node = el.gridstackNode;
-            document.getElementById(node.id).style.transform = `scale(${node.width / 3}, ${node.height / 3})`;
-            toggleNodesInteractivity('initial');
-        });
-
-    });
+    useEffect(() => {});
 
     const [dashboardState, setDashboardState] = useState('none');
 
@@ -49,16 +27,6 @@ function App() {
         animation: true,
         preview: true
     });
-
-    const deleteNode = () => {
-        if (dashboardState !== 'remove nodes') {
-            return;
-        }
-        // delete node
-
-        // delete node preview
-        togglePreviewState(prev => ({ ...prev, preview: true, animation: true }));
-    }
 
     const dashboardMode = (type, event) => {
         setDashboardState(type);
@@ -69,14 +37,6 @@ function App() {
     }
 
     const addNode = () => {
-
-        // add node to screen
-        var items = [
-            // {content: 'my first node'}, // will default to location (0,0) and 1x1
-            { id: 'nodesGraph', width: 3, height: 3, content: '<iframe class="nodesContainer" title="nodesGraph" id="nodesGraph" onclick="() => { console.log(1) }" src="http://127.0.0.1:5501/src/test_screens/1.html"></iframe>' },
-        ];
-        // var grid = GridStack.init();
-        grid.load(items);
 
         // remove preview
         togglePreviewState(prev => ({ ...prev, animation: false }))
@@ -216,11 +176,7 @@ function App() {
                 </div>
             </nav>
             {/* header */}
-            {/* <div id="loginPage" style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '10', background: 'white' }}>
-                <IframeResizer onMessage={onMessage} style={{ height: '100vh', width: '100vw' }} src="http://127.0.0.1:5500/capps.html"></IframeResizer>
-            </div> */}
-            {/* NODES */}
-            <div className="grid-stack"></div>
+            <Nodes></Nodes>
         </div>
     );
 }

@@ -1,10 +1,8 @@
 @font-face {
     font-family: 'Replica-Pro'; 
-    src: url("./fonts/replicapro_regular.otf") format("opentype");
+    src: url("../fonts/replicapro_regular.otf") format("opentype");
     font-style: normal;
 }
-
-
 
 nav.navbar {
     font-family: Replica-Pro, sans-serif;
@@ -60,31 +58,6 @@ nav.navbar .navbar-corner#signIn>div {
 /*
 * GRID STACK
 */
-.grid-container {
-    background-color: #ccc;
-    width: 100vw;
-    height: 100vh;
-}
-.grid-stack{
-    top: 50px;
-}
-
-.grid-stack-item{
-    height: 450px;
-}
-
-.grid-stack .grid-stack-placeholder > .placeholder-content {
-    border: 1px dashed #00739f;
-}
-
-.shrunk-preview{
-    height: 0px !important;
-}
-
-.grid-stack-item-content{
-    background: #fff;
-}
-
 .highlight-grid:hover{
     background: rgba(255,0,0,0.5);
     cursor: pointer;
@@ -141,44 +114,4 @@ nav.navbar .navbar-corner>div .btn {
     color: #fff !important;
     background-color: #000;
     background: #000 !important;
-}
-
-.sidePanel{
-    position: fixed;
-    z-index: 1;
-    top: 50px;
-    right: 0;
-    width: 200px;
-    height: 100vh;
-    display: block;
-    background-color: #004873;
-}
-
-.sidePanel{
-    overflow-y: scroll;
-}
-
-.panels{
-    height: 200px;
-    overflow: hidden;
-}
-
-.sidePanel .panels{
-    cursor: pointer;
-    padding-left: 25px;
-    margin-top: 20px;
-}
-
-.ui-resizable-handle {
-    /* display: none !important; */
-    position: absolute;
-    z-index: 3;
-}
-
-.nodesContainer{
-    height: 665px;
-    transform-origin: 27px 195px;
-    margin-top: -195px;
-    margin-left: -27px;
-    width: 34vw;
 }
