@@ -43,17 +43,18 @@ function App() {
 
     });
 
-    const [showPanel, togglePanelState] = useState(false);
+    const [panelState, setPanelState] = useState('none');
     const [editMode, toggleEditMode] = useState(false);
     const [canDelete, toggleDeleteMode] = useState(false);
 
     const intDeleteMode = () => {
+        setPanelState('remove nodes');
         toggleDeleteMode(true);
         toggleEditMode(!editMode);
     }
 
     const togglePanel = (addMode = false) => {
-        togglePanelState(addMode);
+        setPanelState('add nodes');
         toggleDeleteMode(false);
         toggleEditMode(!editMode);
     }
@@ -98,7 +99,7 @@ function App() {
                 className="sidePanel"
                 animationIn="bounceInRight"
                 animationOut="bounceOutRight"
-                isVisible={showPanel}
+                isVisible={panelState !== 'none'}
             >
                 <Animated
                     className={`panels ${!previewState.preview ? "shrunk-preview" : ""}`}
@@ -189,10 +190,10 @@ function App() {
                 <div>
                     <div id="signIn" className="navbar-corner">
                         <div className="flex-buttons">
-                            {editMode && (<div className="btn btn-black-white" id="GoBack" onClick={() => { togglePanel() }}>
+                            {panelState !== 'none' && (<div className="btn btn-black-white" id="GoBack" onClick={() => { setPanelState('none'); }}>
                                 Done
                             </div>)}
-                            {!editMode && (
+                            {panelState === 'none' && (
                                 <>
                                     <div className="btn btn-black-white" id="Add" onClick={() => { togglePanel(true) }}>
                                         Add
