@@ -17,3 +17,7 @@
     padding-left: 25px;
     margin-top: 20px;
 }
+
+.shrunk-preview {
+    height: 0 !important;
+}

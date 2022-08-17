@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../css/nav.css";
 
-export function NavBar({dashboardState, changeState}) {
+export function NavBar({state, changeState}) {
      
     return (
         <nav className="navbar navbar-fixed-top nav-one DPOFix margin-live">
@@ -15,10 +15,10 @@ export function NavBar({dashboardState, changeState}) {
             <div>
                 <div id="signIn" className="navbar-corner">
                     <div className="flex-buttons">
-                        {dashboardState !== 'none' && (<div className="btn btn-black-white" id="GoBack" onClick={() => { changeState('none') }}>
+                        {state !== 'none' && (<div className="btn btn-black-white" id="GoBack" onClick={() => { changeState('none') }}>
                             Done
                         </div>)}
-                        {dashboardState === 'none' && (
+                        {state === 'none' && (
                             <>
                                 <div className="btn btn-black-white" id="Add" onClick={() => { changeState('add nodes') }}>
                                     Add Nodes
