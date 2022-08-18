@@ -11,6 +11,22 @@ export function Nodes() {
     event.target.remove();
   }
 
+  let initialValues;
+  const layoutChange = (change) => {
+    // rescale the content
+    if (!initialValues) {
+      initialValues = change[0];
+    }
+    document.getElementById(change[0].i).style.transform = `scale(${(change[0].w / initialValues.w)}, ${(change[0].h / initialValues.h)})`;
+  }
+
+  const toggleInteractivity = (id, state) => {
+    const nodesGraph = document.getElementById(id);
+    if (nodesGraph) {
+      nodesGraph.style.pointerEvents = state;
+    }
+  }
+
   return (
     <GridLayout
       className="nodesGrid"
@@ -18,20 +34,18 @@ export function Nodes() {
       rowHeight={30}
       width={1200}
       allowOverlap={false}
-      onLayoutChange={(layout) => { console.log(layout) }}
+      onLayoutChange={layoutChange}
+      onResizeStart={(node) => {
+        toggleInteractivity(node[0].i, 'none');
+      }}
+      onResizeStop={(node) => {
+        toggleInteractivity(node[0].i, 'all');
+      }}
     >
-      <div key="a" data-grid={{ x: 0, y: 0, w: 3, h: 6 }} className="nodeContainer">
+      <div key="nodesGraph" data-grid={{ x: 0, y: 0, w: 5, h: 11 }} className="nodeContainer">
         <div className="nodeOverflow">
           <iframe
             id="nodesGraph"
-            style={{
-              border: 0,
-              transformOrigin: 'top left',
-              transform: 'scale(.5,.5)',
-              marginTop: '-105px',
-              height: '627px',
-              width: '510px',
-            }}
             title="node"
             scrolling="no"
             src="http://127.0.0.1:5501/src/test_screens/1.html"
