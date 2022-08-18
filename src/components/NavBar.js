@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../css/nav.css";
+import { states } from "../constants.js";
 
-export function NavBar({state, changeState}) {
-     
+export function NavBar({ state, changeState }) {
+
     return (
         <nav className="navbar navbar-fixed-top nav-one DPOFix margin-live">
             <div className="navbar-header">
                 <a className="navbar-brand" href="/"></a>
                 <div className="dashboardContainer">
-                    <p >Dashboard: {changeState}</p>
+                    <p>Dashboard: {changeState}</p>
                 </div>
             </div>
 
@@ -20,11 +21,11 @@ export function NavBar({state, changeState}) {
                         </div>)}
                         {state === 'none' && (
                             <>
-                                <div className="btn btn-black-white" id="Add" onClick={() => { changeState('add nodes') }}>
-                                    Add Nodes
+                                <div className="btn btn-black-white" id="Add" onClick={() => { changeState(states.add) }}>
+                                    Move / Add Nodes
                                 </div>
-                                <div className="btn btn-black-white-inverse" id="Delete" onClick={() => { changeState('remove nodes') }}>
-                                    Move / Remove Nodes
+                                <div className="btn btn-black-white-inverse" id="Delete" onClick={() => { changeState(states.remove) }}>
+                                    Remove Nodes
                                 </div>
                             </>
                         )}

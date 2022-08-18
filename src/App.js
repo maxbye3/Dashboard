@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import IframeResizer from 'iframe-resizer-react'
-import { Nodes } from './components/Nodes.js'
+import { Nodes, initialValues, toggleInteractivity } from './components/Nodes.js'
 import { NavBar } from './components/NavBar.js'
 import { SidePanel } from './components/SidePanel.js'
 import { Animated } from "react-animated-css";
+import { states } from "./constants.js";
 import './css/grid.css';
 
 
@@ -26,6 +27,13 @@ function App() {
 
     const setState = (state) => {
         changeState(state);
+        Object.keys(initialValues).forEach((node) => {
+            if (state === states.add) {
+                toggleInteractivity(node, 'none');
+            } else {
+                toggleInteractivity(node, 'all');
+            }
+        });
     }
 
     return (

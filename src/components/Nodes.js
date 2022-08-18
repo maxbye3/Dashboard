@@ -3,18 +3,26 @@ import GridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
+// initial width and height of nodes
+export let initialValues = {
+  nodesGraph: { w: 5, h: 11 },
+  differentGraph: { w: 3, h: 3 }
+};
+
+export const toggleInteractivity = (id, state) => {
+  const nodesGraph = document.getElementById(id);
+  if (nodesGraph) {
+    nodesGraph.style.pointerEvents = state;
+  }
+}
+
 export function Nodes() {
-  // initial width and height of nodes
-  let initialValues = {
-    nodesGraph: { w: 5, h: 11 },
-    differentGraph: { w: 3, h: 3 }
-  };
 
   const removeItem = (event) => {
     event.target.remove();
   }
 
-  const layoutChange = (changes) => {
+  const resizeNodes = (changes) => {
     // rescale the iframe nodes when containers are resized
     changes.forEach((change) => {
       const iframe = {
@@ -25,13 +33,6 @@ export function Nodes() {
     })
   }
 
-  const toggleInteractivity = (id, state) => {
-    const nodesGraph = document.getElementById(id);
-    if (nodesGraph) {
-      nodesGraph.style.pointerEvents = state;
-    }
-  }
-
   return (
     <GridLayout
       className="nodesGrid"
@@ -39,7 +40,8 @@ export function Nodes() {
       rowHeight={30}
       width={1200}
       allowOverlap={false}
-      onLayoutChange={layoutChange}
+      // onLayoutChange={layoutChange}
+      onResize={resizeNodes}
       onResizeStart={(node) => {
         toggleInteractivity(node[0].i, 'none');
       }}
@@ -77,5 +79,3 @@ export function Nodes() {
     </GridLayout >
   );
 }
-
-export default Nodes;

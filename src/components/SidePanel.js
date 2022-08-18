@@ -19,98 +19,96 @@ export function SidePanel({ state, changeState }) {
     }
 
     return (
-        <Animated
-            className="sidePanel"
-            animationIn="bounceInRight"
-            animationOut="bounceOutRight"
-            isVisible={state !== 'none'}
-        >
-            {/*
+        <>
+            {(state === 'add nodes' &&
+                <Animated
+                    className="sidePanel"
+                    animationIn="bounceInRight"
+                    animationOut="bounceOutRight"
+                    isVisible={state === 'add nodes'}
+                >
+                    {/*
                 * ADD NODES
                 */}
-            {(state === 'add nodes' &&
-                <section>
-                    <Animated
-                        className={`panels ${!previewState.preview ? "shrunk-preview" : ""}`}
-                        animationOut="zoomOut"
-                        isVisible={previewState.animation}
-                    >
-                        <div id="nodePreview" onClick={addNode}>
+
+                    <section>
+                        <Animated
+                            className={`panels ${!previewState.preview ? "shrunk-preview" : ""}`}
+                            animationOut="zoomOut"
+                            isVisible={previewState.animation}
+                        >
+                            <div id="nodePreview" onClick={addNode}>
+                                <iframe
+                                    onClick={addNode}
+                                    title="node"
+                                    scrolling="no"
+                                    src="http://127.0.0.1:5501/src/test_screens/1.html"
+                                    style={{
+                                        pointerEvents: 'none',
+                                        border: 0,
+                                        height: '627px',
+                                        transformOrigin: 'top left',
+                                        transform: 'scale(.5,.5)',
+                                        marginTop: '-105px',
+                                    }}
+                                >
+                                </iframe>
+                            </div>
+                        </Animated>
+                        <div
+                            className="panels"
+                        >
                             <iframe
-                                onClick={addNode}
                                 title="node"
                                 scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/1.html"
+                                src="http://127.0.0.1:5501/src/test_screens/2.html"
                                 style={{
-                                    pointerEvents: 'none',
                                     border: 0,
+                                    pointerEvents: 'none',
                                     height: '627px',
-                                    transformOrigin: 'top left',
-                                    transform: 'scale(.5,.5)',
                                     marginTop: '-105px',
                                 }}
                             >
                             </iframe>
                         </div>
-                    </Animated>
-                    <div
-                        className="panels"
-                    >
-                        <iframe
-                            title="node"
-                            scrolling="no"
-                            src="http://127.0.0.1:5501/src/test_screens/2.html"
-                            style={{
-                                border: 0,
-                                pointerEvents: 'none',
-                                height: '627px',
-                                marginTop: '-105px',
-                            }}
-                        >
-                        </iframe>
-                    </div>
 
-                    <div
-                        className="panels"
-                    >
-                        <iframe
-                            title="node"
-                            scrolling="no"
-                            src="http://127.0.0.1:5501/src/test_screens/3.html"
-                            style={{
-                                border: 0,
-                                pointerEvents: 'none',
-                                height: '627px',
-                                marginTop: '-105px',
-                            }}
+                        <div
+                            className="panels"
                         >
-                        </iframe>
-                    </div>
+                            <iframe
+                                title="node"
+                                scrolling="no"
+                                src="http://127.0.0.1:5501/src/test_screens/3.html"
+                                style={{
+                                    border: 0,
+                                    pointerEvents: 'none',
+                                    height: '627px',
+                                    marginTop: '-105px',
+                                }}
+                            >
+                            </iframe>
+                        </div>
 
-                    <div
-                        className="panels"
-                    >
-                        <iframe
-                            title="node"
-                            scrolling="no"
-                            src="http://127.0.0.1:5501/src/test_screens/4.html"
-                            style={{
-                                border: 0,
-                                pointerEvents: 'none',
-                                height: '627px',
-                                marginTop: '-105px',
-                            }}
+                        <div
+                            className="panels"
                         >
-                        </iframe>
-                    </div>
-                </section>)}
-            {/*
-                * MOVE/REMOVE NODES
-                */}
-            {(state === 'remove nodes' &&
-                <h1>DRAG HERE</h1>
+                            <iframe
+                                title="node"
+                                scrolling="no"
+                                src="http://127.0.0.1:5501/src/test_screens/4.html"
+                                style={{
+                                    border: 0,
+                                    pointerEvents: 'none',
+                                    height: '627px',
+                                    marginTop: '-105px',
+                                }}
+                            >
+                            </iframe>
+                        </div>
+                    </section>
+                </Animated>
             )}
-        </Animated>
+        </>
     );
 }
 
