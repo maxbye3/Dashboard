@@ -29,10 +29,19 @@ function App() {
         changeState(state);
         Object.keys(initialValues).forEach((node) => {
             // add and remove nodes requires no node interaction
+            const resizeOptions = document.getElementsByClassName('react-resizable-handle');
             if (state !== states.none) {
                 toggleInteractivity(node, 'none');
+                if (state === states.remove) {
+                    for (let i = 0; i < resizeOptions.length; i++) {
+                        resizeOptions[i].style.display = 'none';
+                    }
+                }
             } else {
                 toggleInteractivity(node, 'all');
+                for (let i = 0; i < resizeOptions.length; i++) {
+                    resizeOptions[i].style.display = 'inline';
+                }
             }
         });
     }
@@ -41,7 +50,7 @@ function App() {
         <div className="App">
             <SidePanel state={state}></SidePanel>
             <NavBar state={state} changeState={setState}></NavBar>
-            <Nodes></Nodes>
+            <Nodes state={state}></Nodes>
         </div>
     );
 }

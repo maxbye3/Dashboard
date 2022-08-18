@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import GridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import { states } from "../constants.js";
 
 // initial width and height of nodes
 export let initialValues = {
@@ -16,10 +17,10 @@ export const toggleInteractivity = (id, state) => {
   }
 }
 
-export function Nodes() {
+export function Nodes({ state }) {
   // nodeVisibility = {nodesGraph: false, ...}
   const [nodeVisibility, toggleVisibility] = useState(Object.keys(initialValues).reduce((a, v) => ({ ...a, [v]: true }), {}));
-
+  const nodeContainerClasses = `nodeContainer ${state === states.remove ? "confirmDelete" : ""}`;
   const resizeNodes = (changes) => {
     // rescale the iframe nodes when containers are resized
     changes.forEach((change) => {
@@ -49,8 +50,13 @@ export function Nodes() {
     >
       ({nodeVisibility.nodesGraph &&
         <div
-          className="nodeContainer"
-          onClick={() => { toggleVisibility(prev => ({ ...prev, nodesGraph: false })) }}
+          className={nodeContainerClasses}
+          onClick={() => {
+            if (state === states.remove) {
+              toggleVisibility(prev => ({ ...prev, nodesGraph: false }))
+            }
+          }
+          }
           key="nodesGraph"
           data-grid={{ x: 0, y: 0, w: initialValues.nodesGraph.w, h: initialValues.nodesGraph.h }}
         >
@@ -66,8 +72,12 @@ export function Nodes() {
       ({
         nodeVisibility.differentGraph &&
         <div
-          className="nodeContainer"
-          onClick={() => { toggleVisibility(prev => ({ ...prev, differentGraph: false })) }}
+          className={nodeContainerClasses}
+          onClick={() => {
+            if (state === states.remove) {
+              toggleVisibility(prev => ({ ...prev, differentGraph: false }))
+            }
+          }}
           key="differentGraph"
           data-grid={{ x: 0, y: 0, w: initialValues.differentGraph.w, h: initialValues.differentGraph.h }}
         >

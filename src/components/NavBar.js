@@ -7,6 +7,7 @@ export function NavBar({ state, changeState }) {
     return (
         <nav className="navbar navbar-fixed-top nav-one DPOFix margin-live">
             <div className="navbar-header">
+                <div className="navbar-brand"></div>
                 <div className="dashboardContainer">
                     <p>Dashboard</p>
                 </div>
