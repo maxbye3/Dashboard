@@ -28,17 +28,6 @@ function App() {
         changeState(state);
     }
 
-    // const setState = (type, event) => {
-    //     changeState(type);
-    //     const nodesGraph = document.getElementById('nodesGraph');
-    //     if (nodesGraph) {
-    //         nodesGraph.style.pointerEvents = event;
-    //     }
-    // }
-
-
-
-
     return (
         <div className="App">
             <SidePanel state={state}></SidePanel>
