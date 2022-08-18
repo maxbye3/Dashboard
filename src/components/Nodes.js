@@ -4,20 +4,25 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
 export function Nodes() {
-  // layout is an array of objects, see the demo for more complete usage
-
+  // initial width and height of nodes
+  let initialValues = {
+    nodesGraph: { w: 5, h: 11 },
+    differentGraph: { w: 3, h: 3 }
+  };
 
   const removeItem = (event) => {
     event.target.remove();
   }
 
-  let initialValues;
-  const layoutChange = (change) => {
-    // rescale the content
-    if (!initialValues) {
-      initialValues = change[0];
-    }
-    document.getElementById(change[0].i).style.transform = `scale(${(change[0].w / initialValues.w)}, ${(change[0].h / initialValues.h)})`;
+  const layoutChange = (changes) => {
+    // rescale the iframe nodes when containers are resized
+    changes.forEach((change) => {
+      const iframe = {
+        w: change.w / initialValues[change.i].w,
+        h: change.h / initialValues[change.i].h
+      }
+      document.getElementById(change.i).style.transform = `scale(${iframe.w}, ${iframe.h})`;
+    })
   }
 
   const toggleInteractivity = (id, state) => {
@@ -42,16 +47,23 @@ export function Nodes() {
         toggleInteractivity(node[0].i, 'all');
       }}
     >
-      <div key="nodesGraph" data-grid={{ x: 0, y: 0, w: 5, h: 11 }} className="nodeContainer">
-        <div className="nodeOverflow">
-          <iframe
-            id="nodesGraph"
-            title="node"
-            scrolling="no"
-            src="http://127.0.0.1:5501/src/test_screens/1.html"
-          >
-          </iframe>
-        </div>
+      <div className="nodeContainer" key="nodesGraph" data-grid={{ x: 0, y: 0, w: initialValues.nodesGraph.w, h: initialValues.nodesGraph.h }}>
+        <iframe
+          id="nodesGraph"
+          title="node"
+          scrolling="no"
+          src="http://127.0.0.1:5501/src/test_screens/1.html"
+        >
+        </iframe>
+      </div>
+      <div className="nodeContainer" key="differentGraph" data-grid={{ x: 0, y: 0, w: initialValues.differentGraph.w, h: initialValues.differentGraph.h }}>
+        <iframe
+          id="differentGraph"
+          title="different"
+          scrolling="no"
+          src="http://127.0.0.1:5501/src/test_screens/1.html"
+        >
+        </iframe>
       </div>
       {/* <div key="1" data-grid={{ x: 0, y: 0, w: 1, h: 2 }}>
         1
