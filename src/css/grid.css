@@ -3,11 +3,11 @@
 }
 
 .nodeContainer {
-    border: red solid 2px;
+    /* border: red solid 2px; */
     overflow: hidden;
 }
 
-#nodesGraph {
+#nodesGraph, #differentGraph {
     transform-origin: 26px 185px;
     margin-top: -185px;
     margin-left: -26px;
