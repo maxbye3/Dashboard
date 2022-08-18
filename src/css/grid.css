@@ -1,3 +1,17 @@
 .nodesGrid{
     top: 50px;
 }
+
+.nodeContainer {
+    border: red solid 2px;
+    padding-top: 10px;
+}
+
+.nodeOverflow {
+    padding: 10px;
+    overflow: hidden;
+}
+
+#nodesGraph {
+
+}

@@ -23,7 +23,7 @@
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/busyutls/busyutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/numutls/numutls.js"></script>
 <script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/static/js/core/dtutls/dtutls.js"></script>
-<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node05ndzhr93nxt1xa1g5mup10gd18330-1660328500198.js"></script>
+<script type="text/javascript" src="https://authex-0.tsgctp.org:9001/webapps/transient/js/node0hd6r0l3b7mts8nrzt521tun310324-1660674879000.js"></script>
 
 <!-- Common, CDN and some local files ... -->
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
@@ -47,7 +47,9 @@
 
 <!-- External libraries or CSS, specififc to an app or group of apps ... -->
 <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/dumbbell.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/lollipop.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/offline-exporting.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -60,7 +62,7 @@
 <link href="https://authex-0.tsgctp.org:9001/webapps/static/img/favicon.ico" rel="shortcut icon">
 
 <title>
-Sessions</title>
+Nodes</title>
 </head>
 
 <body>
@@ -185,6 +187,7 @@ Sessions</title>
 <li id="b7151597" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/btrequestcount/" class="pure-menu-link">Braintree Payment Gateway Daily Request Count</a></li>
 <li id="aeab605a" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/bterrorlogs/" class="pure-menu-link">Braintree Payment Gateway Error Logs</a></li>
 <li id="3989f449" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/btloglookup/" class="pure-menu-link">Braintree Payment Gateway Log Lookup</a></li>
+<li id="d9537105" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/btrequestbyuser/" class="pure-menu-link">Braintree Payment Gateway Request By User & Action</a></li>
 <li id="84e8cda9" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/iworkslineitemimports/" class="pure-menu-link">IWorks Line Items</a></li>
 <li id="769d1e75" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/iworkslineitemimportswc/" class="pure-menu-link">IWorks Word Cloud</a></li>
 <li id="71da9090" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/nsprocessdata/" class="pure-menu-link">Netsuite Data</a></li>
@@ -210,6 +213,7 @@ Sessions</title>
 <li id="a2ad6d79" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/ticketeditorapp/" class="pure-menu-link">Editor for Ticket Objects</a></li>
 <li id="2dd57138" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsviewobjects/" class="pure-menu-link">Object Viewer Validation Request Focus</a></li>
 <li id="0dd4dda6" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orghandleregeneration/" class="pure-menu-link">Regenerate Org Handle</a></li>
+<li id="00969c81" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/orgdataupdated/" class="pure-menu-link">Retrieve Updated orgs</a></li>
 <li id="c0a4dfdf" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tokenchange/" class="pure-menu-link">Token Change</a></li>
 <li id="aac89886" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/tokencheck/" class="pure-menu-link">Token Check</a></li>
 <li id="bcd9a0ff" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsartifactlist/" class="pure-menu-link">Validation Artifacts List</a></li>
@@ -222,6 +226,7 @@ Sessions</title>
 <li id="87a4ec3b" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestlist/" class="pure-menu-link">Validation Request List</a></li>
 <li id="2419cc6e" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestcontextlist/" class="pure-menu-link">Validation Request List Wt. Context</a></li>
 <li id="0cdecb9c" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vsrequestobject/" class="pure-menu-link">Validation Request Object</a></li>
+<li id="4d1350b7" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/valretrievepointer/" class="pure-menu-link">Validation Retrieve Pointer</a></li>
 <li id="a83b0abb" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbycountry/" class="pure-menu-link">Validation Transactions by Country</a></li>
 <li id="c7ba27aa" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbydate/" class="pure-menu-link">Validation Transactions by Date</a></li>
 <li id="acc2a393" class="pure-menu-item"><a href="https://authex-0.tsgctp.org:9007/services/capps/vstransrequestbymapping/" class="pure-menu-link">Validation Transactions by VS Mapping</a></li>
@@ -258,26 +263,26 @@ Sessions</title>
 <div class="div-capp-small">
 &nbsp;&nbsp;&nbsp;<span id="ctp_user">a-su3@ctpdev.org</span>
 &nbsp;&gt;
-&nbsp; <b><em style="color:#85c1fa;">prod/capp-su2</em></b> &nbsp;&gt;&nbsp;<em>Overview list of active CTP sessions.</em>
+&nbsp; <b><em style="color:#85c1fa;">prod/capp-su2</em></b> &nbsp;&gt;&nbsp;<em>Basic information on each active CTP node.</em>
 &nbsp;&gt;
-&nbsp;<em>0.94.505</em>
+&nbsp;<em>0.94.506</em>
 </div>
 
 <div class="div-capp-xsmall"> 
-	<form id="app_auth_form" class="pure-form">
-		<fieldset>
-			<div class="div-capp-xsmall">
-			<input id="username" type="email" autocomplete="username" placeholder="Admin user ..." />
-			<input id="password" type="password" autocomplete="current-password" placeholder="Admin password ..." />
-			<button type="button" id="auth_button" onclick="authenticateFunction()" class="pure-button button-small">Admin Log In</button>
-			</div>
-		</fieldset>
-	</form>
-	</div>
-	
-	<div id="api_service_control" class="div-capp-xsmall"> 
-		<button type="button" id="api_service_button" onclick="apiService()" class="pure-button button-small">Access API/Service</button>
-	</div>
+    <form id="app_auth_form" class="pure-form">
+        <fieldset>
+            <div class="div-capp-xsmall">
+            <input id="username" type="email" autocomplete="username" placeholder="Admin user ..." />
+            <input id="password" type="password" autocomplete="current-password" placeholder="Admin password ..." />
+            <button type="button" id="auth_button" onclick="authenticateFunction()" class="pure-button button-small">Admin Log In</button>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+    
+    <div id="api_service_control" class="div-capp-xsmall"> 
+        <button type="button" id="api_service_button" onclick="apiService()" class="pure-button button-small">Access API/Service</button>
+    </div>
 
 <div class="spinner-container"><div id="spinner" class="wave hidden-element"></div></div>
 
@@ -287,19 +292,23 @@ Sessions</title>
 <!-- We need the parent div to child element (table) relationship for the API data updates to function. -->
 <div id="ctp_data_table_parent" class="div-capp hidden-element">
 
- 
+
 <table id="ctp_data_table" class="cell-border compact stripe hover" style="width:100%">
-	<thead>
-		<tr>
-			<th>Active Hours</th>
-			<th>Started</th>
-			<th>Principal</th>
-			<th>Session</th>
-			<th>API User</th>
-		</tr>
-	</thead>		
-	<tbody>
-			</tbody>
+    <thead>
+        <tr>
+            <th>Uptime</th>
+            <th>Node</th>
+            <th>IP</th>
+            <th>Name</th>
+            <th>Version</th>
+            <th>Profile</th>
+            <th>Region</th>
+            <th>Started</th>
+            <th>Heartbeat</th>
+        </tr>
+    </thead>        
+    <tbody>
+            </tbody>
 </table>
 </div>
 
@@ -313,23 +322,19 @@ Sessions</title>
 <!-- START MARKDOWN TEXT -->  
 <h5 id="overview"><a href="#overview" id="overview">Overview:</a></h5>
 <blockquote>
-<p>This CApp displays the distribution of <em>user sessions</em> withing the CTP authentication systems. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup> <sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup></p>
+<p>This CApp display active <em>CTP nodes</em> along with the number of days each node has been active. <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup></p>
 </blockquote>
 <!-- END MARKDOWN TEXT -->
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn-1">
-<p>The <em>hours a session has been active</em> is displayed by hovering over a point in the scatter diagram.</p>
+<p>Just hover your pointer over a lollipop bar to display the <em>days up</em> metric.</p>
 <a href="#fnref-1" class="footnote-backref">&#8617;</a>
 </li>
 <li id="fn-2">
-<p>Sorting the data table by <em>Active Hours</em> will redrawn the scatter point graphics in a linear manner. One can also filter the table on the domain of the <em>Principle</em> email address to isolate a group of users for inspection.</p>
-<a href="#fnref-2" class="footnote-backref">&#8617;</a>
-</li>
-<li id="fn-3">
 <p>Note that the graph can be viewed independent from the source table, and or exported in various image formats, using the controls available in the upper right corner of the graphic (the hamburger menu).</p>
-<a href="#fnref-3" class="footnote-backref">&#8617;</a>
+<a href="#fnref-2" class="footnote-backref">&#8617;</a>
 </li>
 </ol>
 </div>
