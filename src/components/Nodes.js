@@ -17,19 +17,8 @@ export const toggleInteractivity = (id, state) => {
 }
 
 export function Nodes() {
-
-  const [nodeVisibility, toggleVisibility] = useState({
-    // ...initialValues
-    nodesGraph: true,
-    differentGraph: true
-  });
-
-  // const toggleVisibility = (node) => {
-  //   // togglePreviewState(prev => ({ ...prev, animation: false }))
-  //   editNode(prev => ({ ...prev, {...prev[node], visibility: true }}))
-  //   // editNode(nodeModules[node].visibility: true)
-  //   console.log(node);
-  // }
+  // nodeVisibility = {nodesGraph: false, ...}
+  const [nodeVisibility, toggleVisibility] = useState(Object.keys(initialValues).reduce((a, v) => ({ ...a, [v]: true }), {}));
 
   const resizeNodes = (changes) => {
     // rescale the iframe nodes when containers are resized
@@ -58,10 +47,13 @@ export function Nodes() {
         toggleInteractivity(node[0].i, 'all');
       }}
     >
-      {/* (prev => ({...prev, animation: false })) */}
-
       ({nodeVisibility.nodesGraph &&
-        <div onClick={() => { toggleVisibility(prev => ({ ...prev, nodesGraph: false })) }} className="nodeContainer" key="nodesGraph" data-grid={{ x: 0, y: 0, w: initialValues.nodesGraph.w, h: initialValues.nodesGraph.h }}>
+        <div
+          className="nodeContainer"
+          onClick={() => { toggleVisibility(prev => ({ ...prev, nodesGraph: false })) }}
+          key="nodesGraph"
+          data-grid={{ x: 0, y: 0, w: initialValues.nodesGraph.w, h: initialValues.nodesGraph.h }}
+        >
           <iframe
             id="nodesGraph"
             title="node"
@@ -71,24 +63,23 @@ export function Nodes() {
           </iframe>
         </div>
       })
-      <div className="nodeContainer" key="differentGraph" data-grid={{ x: 0, y: 0, w: initialValues.differentGraph.w, h: initialValues.differentGraph.h }}>
-        <iframe
-          id="differentGraph"
-          title="different"
-          scrolling="no"
-          src="http://127.0.0.1:5501/src/test_screens/1.html"
+      ({
+        nodeVisibility.differentGraph &&
+        <div
+          className="nodeContainer"
+          onClick={() => { toggleVisibility(prev => ({ ...prev, differentGraph: false })) }}
+          key="differentGraph"
+          data-grid={{ x: 0, y: 0, w: initialValues.differentGraph.w, h: initialValues.differentGraph.h }}
         >
-        </iframe>
-      </div>
-      {/* <div key="1" data-grid={{ x: 0, y: 0, w: 1, h: 2 }}>
-        1
-      </div>
-      <div key="2" data-grid={{ x: 0, y: 0, w: 1, h: 2 }}>
-        2
-      </div>
-      <div key="3" data-grid={{ x: 0, y: 0, w: 1, h: 2 }}>
-        3
-      </div> */}
+          <iframe
+            id="differentGraph"
+            title="different"
+            scrolling="no"
+            src="http://127.0.0.1:5501/src/test_screens/1.html"
+          >
+          </iframe>
+        </div>
+      });
     </GridLayout >
   );
 }
