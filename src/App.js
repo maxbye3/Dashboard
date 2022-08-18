@@ -28,7 +28,8 @@ function App() {
     const setState = (state) => {
         changeState(state);
         Object.keys(initialValues).forEach((node) => {
-            if (state === states.add) {
+            // add and remove nodes requires no node interaction
+            if (state !== states.none) {
                 toggleInteractivity(node, 'none');
             } else {
                 toggleInteractivity(node, 'all');

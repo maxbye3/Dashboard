@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -18,9 +18,18 @@ export const toggleInteractivity = (id, state) => {
 
 export function Nodes() {
 
-  const removeItem = (event) => {
-    event.target.remove();
-  }
+  const [nodeVisibility, toggleVisibility] = useState({
+    // ...initialValues
+    nodesGraph: true,
+    differentGraph: true
+  });
+
+  // const toggleVisibility = (node) => {
+  //   // togglePreviewState(prev => ({ ...prev, animation: false }))
+  //   editNode(prev => ({ ...prev, {...prev[node], visibility: true }}))
+  //   // editNode(nodeModules[node].visibility: true)
+  //   console.log(node);
+  // }
 
   const resizeNodes = (changes) => {
     // rescale the iframe nodes when containers are resized
@@ -49,15 +58,19 @@ export function Nodes() {
         toggleInteractivity(node[0].i, 'all');
       }}
     >
-      <div className="nodeContainer" key="nodesGraph" data-grid={{ x: 0, y: 0, w: initialValues.nodesGraph.w, h: initialValues.nodesGraph.h }}>
-        <iframe
-          id="nodesGraph"
-          title="node"
-          scrolling="no"
-          src="http://127.0.0.1:5501/src/test_screens/1.html"
-        >
-        </iframe>
-      </div>
+      {/* (prev => ({...prev, animation: false })) */}
+
+      ({nodeVisibility.nodesGraph &&
+        <div onClick={() => { toggleVisibility(prev => ({ ...prev, nodesGraph: false })) }} className="nodeContainer" key="nodesGraph" data-grid={{ x: 0, y: 0, w: initialValues.nodesGraph.w, h: initialValues.nodesGraph.h }}>
+          <iframe
+            id="nodesGraph"
+            title="node"
+            scrolling="no"
+            src="http://127.0.0.1:5501/src/test_screens/1.html"
+          >
+          </iframe>
+        </div>
+      })
       <div className="nodeContainer" key="differentGraph" data-grid={{ x: 0, y: 0, w: initialValues.differentGraph.w, h: initialValues.differentGraph.h }}>
         <iframe
           id="differentGraph"
