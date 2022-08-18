@@ -9,7 +9,7 @@ export function NavBar({ state, changeState }) {
             <div className="navbar-header">
                 <a className="navbar-brand" href="/"></a>
                 <div className="dashboardContainer">
-                    <p>Dashboard: {changeState}</p>
+                    <p>Dashboard</p>
                 </div>
             </div>
 
