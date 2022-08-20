@@ -22,12 +22,12 @@ function App() {
     // }
 
     // useEffect(() => {});
-
-    const [visibleNodes, toggleVisibility] = useState(Object.keys(initialValues).reduce((a, v) => ({ ...a, [v]: true }), {}));
+    const [nodes, updateNode] = useState(initialValues);
     const [dashbordState, changeState] = useState('none');
 
-    const visibilityUpdated = (nodes) => {
-        toggleVisibility(nodes);
+    const nodeChange = (props) => {
+        updateNode(props);
+        console.log(nodes);
     }
 
     const setState = (state) => {
@@ -53,9 +53,9 @@ function App() {
 
     return (
         <div className="App">
-            <SidePanel state={dashbordState} toggleVisibility={visibilityUpdated} visibility={visibleNodes}></SidePanel>
+            <SidePanel state={dashbordState} toggleVisibility={nodeChange} nodes={nodes}></SidePanel>
             <NavBar state={dashbordState} changeState={setState}></NavBar>
-            <Grid state={dashbordState} toggleVisibility={visibilityUpdated} visibility={visibleNodes}></Grid>
+            <Grid state={dashbordState} toggleVisibility={nodeChange} nodes={nodes}></Grid>
         </div>
     );
 }

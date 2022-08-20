@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Animated } from "react-animated-css";
 import "../css/panel.css";
 
-export function SidePanel({ state, visibility, toggleVisibility }) {
+export function SidePanel({ state, nodes, toggleVisibility }) {
 
     const [previewState, togglePreviewState] = useState({
         animation: true,
@@ -12,7 +12,7 @@ export function SidePanel({ state, visibility, toggleVisibility }) {
 
     const addNode = () => {
         // add node
-        toggleVisibility(prev => ({ ...prev, nodesGraph: true }));
+        toggleVisibility(prev => ({ ...prev, nodesGraph: { visible: true } }))
 
         // remove preview
         togglePreviewState(prev => ({ ...prev, animation: false }))
