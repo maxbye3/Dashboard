@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Animated } from "react-animated-css";
 import "../css/panel.css";
 
-export function SidePanel({ state, changeState }) {
+export function SidePanel({ state, visibility, toggleVisibility }) {
 
     const [previewState, togglePreviewState] = useState({
         animation: true,

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import IframeResizer from 'iframe-resizer-react'
-import { Nodes, initialValues, toggleInteractivity } from './components/Nodes.js'
+import { initialValues } from './components/Node.js'
+import { Grid, toggleInteractivity } from './components/Grid.js'
 import { NavBar } from './components/NavBar.js'
 import { SidePanel } from './components/SidePanel.js'
 import { Animated } from "react-animated-css";
@@ -20,10 +21,14 @@ function App() {
     //     document.getElementById('loginPage').style.display = 'none';
     // }
 
+    // useEffect(() => {});
 
-    useEffect(() => { });
+    const [visibleNodes, toggleVisibility] = useState(Object.keys(initialValues).reduce((a, v) => ({ ...a, [v]: true }), {}));
+    const [dashbordState, changeState] = useState('none');
 
-    const [state, changeState] = useState('none');
+    const visibilityUpdated = (nodes) => {
+        toggleVisibility(nodes);
+    }
 
     const setState = (state) => {
         changeState(state);
@@ -48,9 +53,9 @@ function App() {
 
     return (
         <div className="App">
-            <SidePanel state={state}></SidePanel>
-            <NavBar state={state} changeState={setState}></NavBar>
-            <Nodes state={state}></Nodes>
+            <SidePanel state={dashbordState}></SidePanel>
+            <NavBar state={dashbordState} changeState={setState}></NavBar>
+            <Grid state={dashbordState} toggleVisibility={visibilityUpdated} visibility={visibleNodes}></Grid>
         </div>
     );
 }
