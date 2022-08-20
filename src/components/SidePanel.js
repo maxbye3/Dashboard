@@ -10,9 +10,9 @@ export function SidePanel({ state, nodes, toggleVisibility }) {
     });
 
 
-    const addNode = () => {
+    const addNode = (id) => {
         // add node
-        toggleVisibility(prev => ({ ...prev, nodesGraph: { visible: true } }))
+        toggleVisibility(prev => ({ ...prev, [id]: { visible: true } }))
 
         // remove preview
         togglePreviewState(prev => ({ ...prev, animation: false }))
@@ -40,7 +40,7 @@ export function SidePanel({ state, nodes, toggleVisibility }) {
                             animationOut="zoomOut"
                             isVisible={previewState.animation}
                         >
-                            <div id="nodePreview" onClick={addNode}>
+                            <div id="nodePreview" onClick={() => { addNode('nodesGraph') }}>
                                 <iframe
                                     title="node"
                                     scrolling="no"
@@ -59,6 +59,7 @@ export function SidePanel({ state, nodes, toggleVisibility }) {
                         </Animated>
                         <div
                             className="panels"
+                            onClick={() => { addNode('differentGraph') }}
                         >
                             <iframe
                                 title="node"
