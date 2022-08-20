@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import IframeResizer from 'iframe-resizer-react'
-import { initialValues } from './components/Node.js'
+import { initialValues } from './components/Nodes.js'
 import { Grid, toggleInteractivity } from './components/Grid.js'
 import { NavBar } from './components/NavBar.js'
 import { SidePanel } from './components/SidePanel.js'
@@ -27,7 +27,6 @@ function App() {
 
     const nodeChange = (props) => {
         updateNode(props);
-        console.log(nodes);
     }
 
     const setState = (state) => {

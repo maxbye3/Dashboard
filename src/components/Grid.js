@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import GridLayout from "react-grid-layout";
-import { initialValues } from './Node.js'
+import { initialValues } from './Nodes.js'
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import { states } from "../constants.js";

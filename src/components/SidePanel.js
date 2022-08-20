@@ -1,23 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Animated } from "react-animated-css";
 import "../css/panel.css";
 
 export function SidePanel({ state, nodes, toggleVisibility }) {
-
-    const [previewState, togglePreviewState] = useState({
-        animation: true,
-        preview: true
-    });
-
-
     const addNode = (id) => {
         // add node
-        toggleVisibility(prev => ({ ...prev, [id]: { visible: true } }))
+        console.log(nodes[id]);
+        toggleVisibility(prev => ({ ...prev, [id]: { ...nodes[id], visible: true } }));
 
         // remove preview
-        togglePreviewState(prev => ({ ...prev, animation: false }))
         setTimeout(() => {
-            togglePreviewState(prev => ({ ...prev, preview: false }))
+            toggleVisibility(prev => ({ ...prev, [id]: { ...nodes[id], visible: true, animation: true } }));
         }, 500);
     }
 
@@ -33,12 +26,11 @@ export function SidePanel({ state, nodes, toggleVisibility }) {
                     {/*
                 * ADD NODES
                 */}
-
                     <section>
                         <Animated
-                            className={`panels ${!previewState.preview ? "shrunk-preview" : ""}`}
+                            className={`panels ${nodes.nodesGraph.animation ? "shrunk-preview" : ""}`}
                             animationOut="zoomOut"
-                            isVisible={previewState.animation}
+                            isVisible={!nodes.nodesGraph.visible}
                         >
                             <div id="nodePreview" onClick={() => { addNode('nodesGraph') }}>
                                 <iframe
@@ -57,24 +49,29 @@ export function SidePanel({ state, nodes, toggleVisibility }) {
                                 </iframe>
                             </div>
                         </Animated>
-                        <div
-                            className="panels"
-                            onClick={() => { addNode('differentGraph') }}
+                        <Animated
+                            className={`panels ${nodes.differentGraph.animation ? "shrunk-preview" : ""}`}
+                            animationOut="zoomOut"
+                            isVisible={!nodes.differentGraph.visible}
                         >
-                            <iframe
-                                title="node"
-                                scrolling="no"
-                                src="http://127.0.0.1:5501/src/test_screens/2.html"
-                                style={{
-                                    border: 0,
-                                    pointerEvents: 'none',
-                                    height: '627px',
-                                    marginTop: '-105px',
-                                }}
+                            <div
+                                className="panels"
+                                onClick={() => { addNode('differentGraph') }}
                             >
-                            </iframe>
-                        </div>
-
+                                <iframe
+                                    title="node"
+                                    scrolling="no"
+                                    src="http://127.0.0.1:5501/src/test_screens/2.html"
+                                    style={{
+                                        border: 0,
+                                        pointerEvents: 'none',
+                                        height: '627px',
+                                        marginTop: '-105px',
+                                    }}
+                                >
+                                </iframe>
+                            </div>
+                        </Animated>
                         <div
                             className="panels"
                         >
