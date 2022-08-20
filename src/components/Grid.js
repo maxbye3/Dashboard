@@ -13,11 +13,6 @@ export const toggleInteractivity = (id, state) => {
 }
 
 export function Grid({ state, visibility, toggleVisibility }) {
-  // visibility = {nodesGraph: false, ...}
-  // const [visibility, toggleVisibility] = useState(Object.keys(initialValues).reduce((a, v) => ({ ...a, [v]: true }), {}));
-
-  // const toggleVisibility = ()
-
   const nodeContainerClasses = `nodeContainer ${state === states.remove ? "confirmDelete" : ""}`;
   const resizeNodes = (changes) => {
     // rescale the iframe nodes when containers are resized

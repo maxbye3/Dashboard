@@ -53,7 +53,7 @@ function App() {
 
     return (
         <div className="App">
-            <SidePanel state={dashbordState}></SidePanel>
+            <SidePanel state={dashbordState} toggleVisibility={visibilityUpdated} visibility={visibleNodes}></SidePanel>
             <NavBar state={dashbordState} changeState={setState}></NavBar>
             <Grid state={dashbordState} toggleVisibility={visibilityUpdated} visibility={visibleNodes}></Grid>
         </div>
